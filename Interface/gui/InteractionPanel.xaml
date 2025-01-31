@@ -1,0 +1,39 @@
+<UserControl x:Class="SebastianInterface.InteractionPanel"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <Grid>
+        <!-- Main Interaction Area -->
+        <Border Background="#0A0A0F" Opacity="0.95">
+            <!-- Live Interaction Display -->
+            <DockPanel>
+                <!-- Response Area -->
+                <ScrollViewer DockPanel.Dock="Top">
+                    <ItemsControl ItemsSource="{Binding Interactions}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Message}"
+                                         Foreground="#C0C2C9"
+                                         FontFamily="Cinzel"
+                                         Margin="5">
+                                    <TextBlock.Effect>
+                                        <DropShadowEffect Color="#4A1C40" 
+                                                        BlurRadius="3"/>
+                                    </TextBlock.Effect>
+                                </TextBlock>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+
+                <!-- Input Area -->
+                <Grid DockPanel.Dock="Bottom">
+                    <TextBox Text="{Binding UserInput}"
+                             Background="#0A0A0F"
+                             Foreground="#C0C2C9"
+                             BorderBrush="#8B0000"/>
+                </Grid>
+            </DockPanel>
+        </Border>
+    </Grid>
+</UserControl>

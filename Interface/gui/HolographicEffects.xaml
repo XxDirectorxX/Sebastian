@@ -1,0 +1,34 @@
+<UserControl x:Class="SebastianInterface.HolographicEffects"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <Canvas>
+        <!-- Quantum Field Particles -->
+        <ItemsControl ItemsSource="{Binding FieldParticles}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Canvas/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            
+            <!-- Particle Template -->
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Ellipse Width="4" Height="4" 
+                             Fill="#BF9B30" Opacity="0.8">
+                        <Ellipse.Effect>
+                            <BlurEffect Radius="2"/>
+                        </Ellipse.Effect>
+                    </Ellipse>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+        <!-- Contract Seal Overlay -->
+        <Path Stroke="#8B0000" StrokeThickness="1.5">
+            <Path.Effect>
+                <BlurEffect Radius="4"/>
+            </Path.Effect>
+        </Path>
+    </Canvas>
+</UserControl>

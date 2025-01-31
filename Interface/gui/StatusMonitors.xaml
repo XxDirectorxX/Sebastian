@@ -1,0 +1,29 @@
+<UserControl x:Class="SebastianInterface.StatusMonitors"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <Grid>
+        <!-- Quantum Field Monitor -->
+        <Border BorderBrush="#4A1C40" BorderThickness="1">
+            <StackPanel>
+                <!-- Field Strength Display -->
+                <TextBlock Text="{Binding FieldStrength}"
+                           Foreground="#C0C2C9"
+                           FontFamily="Cinzel"/>
+                <ProgressBar Value="{Binding FieldStrength}"
+                           Maximum="46.97871376"
+                           Height="4"
+                           Foreground="#BF9B30"/>
+                
+                <!-- Reality Coherence -->
+                <TextBlock Text="{Binding RealityCoherence}"
+                           Foreground="#C0C2C9"
+                           FontFamily="Cinzel"/>
+                <ProgressBar Value="{Binding RealityCoherence}"
+                           Maximum="1.618033988749895"
+                           Height="4"
+                           Foreground="#8B0000"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

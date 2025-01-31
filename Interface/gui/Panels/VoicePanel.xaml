@@ -1,0 +1,26 @@
+<UserControl x:Class="Sebastian.Panels.VoicePanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Border Style="{StaticResource PanelStyle}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Canvas x:Name="VoicePatternVisualizer"/>
+            
+            <StackPanel Grid.Row="1" 
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        Margin="20">
+                <Button Content="Start Voice" 
+                        Style="{StaticResource QuantumButton}"
+                        x:Name="StartVoiceButton"/>
+                <Button Content="Stop Voice" 
+                        Style="{StaticResource QuantumButton}"
+                        x:Name="StopVoiceButton"/>
+            </StackPanel>
+        </Grid>
+    </Border>
+</UserControl>

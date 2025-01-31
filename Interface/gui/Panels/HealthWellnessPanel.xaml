@@ -1,0 +1,33 @@
+<UserControl x:Class="gui.Panels.HealthWellnessPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="#1E1E1E">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <!-- Left Sidebar -->
+        <StackPanel Grid.Column="0" Background="#252526">
+            <Button Content="Physical Health"/>
+            <Button Content="Mental Well-being"/>
+            <Button Content="PTSD Monitoring"/>
+            <Button Content="Health Records"/>
+        </StackPanel>
+        
+        <!-- Main Content -->
+        <Grid Grid.Column="1" Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            
+            <!-- Health data visualization -->
+            <Border Grid.Row="1" Background="#252526">
+                <!-- Charts and graphs -->
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>

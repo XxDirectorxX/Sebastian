@@ -1,0 +1,36 @@
+<UserControl x:Class="gui.Panels.VoiceCommunicationPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="#1E1E1E">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <!-- Left Sidebar -->
+        <StackPanel Grid.Column="0" Background="#252526">
+            <Button Content="Voice Chat"/>
+            <Button Content="Video Chat"/>
+            <Button Content="Text Chat"/>
+            <Button Content="Voice Processing"/>
+        </StackPanel>
+        
+        <!-- Main Communication Area -->
+        <Grid Grid.Column="1" Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            
+            <Border Background="#252526">
+                <!-- Chat interface -->
+            </Border>
+            
+            <DockPanel Grid.Row="1" LastChildFill="True" Margin="0,20,0,0">
+                <Button DockPanel.Dock="Right" Content="Send"/>
+                <TextBox Background="#1E1E1E" Foreground="#D4D4D4"/>
+            </DockPanel>
+        </Grid>
+    </Grid>
+</UserControl>

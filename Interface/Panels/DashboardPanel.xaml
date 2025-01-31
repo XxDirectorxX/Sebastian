@@ -1,0 +1,15 @@
+<UserControl x:Class="Sebastian.Interface.Panels.DashboardPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="clr-namespace:Sebastian.Interface.Controls">
+    <Border Style="{StaticResource PanelStyle}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <controls:StatusMonitors Grid.Row="0"/>
+            <controls:VoicePatternVisualizer Grid.Row="1"/>
+        </Grid>
+    </Border>
+</UserControl>

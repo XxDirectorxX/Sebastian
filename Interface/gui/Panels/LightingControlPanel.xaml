@@ -1,0 +1,52 @@
+<UserControl x:Class="Sebastian.Panels.LightingControlPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Background="{StaticResource BackgroundColor}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Room Selection -->
+        <ComboBox Grid.Row="0"
+                  Margin="20"
+                  x:Name="RoomSelector">
+            <ComboBoxItem Content="Living Room"/>
+            <ComboBoxItem Content="Study"/>
+            <ComboBoxItem Content="Bedroom"/>
+            <ComboBoxItem Content="Kitchen"/>
+        </ComboBox>
+
+        <!-- Light Controls -->
+        <Grid Grid.Row="1" Margin="20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Brightness Control -->
+            <StackPanel Grid.Column="0" Margin="0,0,10,0">
+                <TextBlock Text="Brightness"
+                         Foreground="{StaticResource TextColor}"
+                         Margin="0,0,0,10"/>
+                <Slider x:Name="BrightnessSlider"
+                        Maximum="100"
+                        Value="50"
+                        Orientation="Vertical"
+                        Height="200"/>
+            </StackPanel>
+
+            <!-- Color Temperature -->
+            <StackPanel Grid.Column="1" Margin="10,0,0,0">
+                <TextBlock Text="Color Temperature"
+                         Foreground="{StaticResource TextColor}"
+                         Margin="0,0,0,10"/>
+                <Slider x:Name="ColorTempSlider"
+                        Maximum="100"
+                        Value="50"
+                        Orientation="Vertical"
+                        Height="200"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

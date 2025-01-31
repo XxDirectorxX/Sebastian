@@ -1,0 +1,47 @@
+<UserControl x:Class="gui.Panels.AdvancedAbilitiesPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="#1E1E1E">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <!-- System Status -->
+        <Border Background="#252526" Padding="20">
+            <StackPanel>
+                <TextBlock Text="Advanced Abilities" Foreground="#D4D4D4" FontSize="24"/>
+                <!-- Performance indicators -->
+            </StackPanel>
+        </Border>
+        
+        <!-- Abilities Grid -->
+        <UniformGrid Grid.Row="1" Columns="2" Rows="2" Margin="20">
+            <Border Background="#252526" Margin="5">
+                <StackPanel>
+                    <TextBlock Text="Reality Manipulation" Foreground="#D4D4D4"/>
+                    <!-- Reality controls -->
+                </StackPanel>
+            </Border>
+            <Border Background="#252526" Margin="5">
+                <StackPanel>
+                    <TextBlock Text="Time Control" Foreground="#D4D4D4"/>
+                    <!-- Time controls -->
+                </StackPanel>
+            </Border>
+            <Border Background="#252526" Margin="5">
+                <StackPanel>
+                    <TextBlock Text="Energy Projection" Foreground="#D4D4D4"/>
+                    <!-- Energy controls -->
+                </StackPanel>
+            </Border>
+            <Border Background="#252526" Margin="5">
+                <StackPanel>
+                    <TextBlock Text="System Optimization" Foreground="#D4D4D4"/>
+                    <!-- Optimization controls -->
+                </StackPanel>
+            </Border>
+        </UniformGrid>
+    </Grid>
+</UserControl>

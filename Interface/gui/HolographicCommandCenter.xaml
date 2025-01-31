@@ -1,0 +1,43 @@
+<UserControl x:Class="SebastianInterface.HolographicCommandCenter"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <Grid>
+        <!-- Central Command Interface -->
+        <Canvas>
+            <!-- Holographic Rings -->
+            <ItemsControl ItemsSource="{Binding CommandRings}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Ellipse Width="{Binding Diameter}" 
+                                Height="{Binding Diameter}"
+                                Stroke="#BF9B30"
+                                StrokeThickness="1">
+                            <Ellipse.RenderTransform>
+                                <RotateTransform Angle="{Binding Rotation}"/>
+                            </Ellipse.RenderTransform>
+                            <Ellipse.Effect>
+                                <BlurEffect Radius="2"/>
+                            </Ellipse.Effect>
+                        </Ellipse>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <!-- Command Nodes -->
+            <ItemsControl ItemsSource="{Binding CommandNodes}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Button Style="{StaticResource HolographicButtonStyle}"
+                                Command="{Binding NodeCommand}">
+                            <Button.Content>
+                                <Path Data="{Binding IconGeometry}"
+                                      Fill="#4A1C40"/>
+                            </Button.Content>
+                        </Button>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Canvas>
+    </Grid>
+</UserControl>

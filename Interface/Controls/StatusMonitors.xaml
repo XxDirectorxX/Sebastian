@@ -1,0 +1,10 @@
+<UserControl x:Class="Sebastian.Interface.Controls.StatusMonitors"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Border Style="{StaticResource PanelStyle}">
+        <StackPanel>
+            <TextBlock Text="System Status" Foreground="#D4D4D4"/>
+            <ProgressBar Height="2" Background="#3E3E3E"/>
+        </StackPanel>
+    </Border>
+</UserControl>

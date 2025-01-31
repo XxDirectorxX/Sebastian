@@ -1,0 +1,11 @@
+<UserControl x:Class="SebastianInterface.TimeControlPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid>
+        <Slider x:Name="TimeFlowSlider" Minimum="0" Maximum="100" />
+        <Slider x:Name="TimeDilationSlider" Minimum="0" Maximum="100" />
+        <Button x:Name="ManipulateButton" Content="Manipulate" />
+        <Button x:Name="ResetButton" Content="Reset" />
+        <Button x:Name="SyncButton" Content="Sync" />
+    </Grid>
+</UserControl>

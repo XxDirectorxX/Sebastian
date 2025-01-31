@@ -1,0 +1,67 @@
+<UserControl x:Class="Sebastian.Panels.SecurityControlPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Background="{StaticResource BackgroundColor}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Status Display -->
+        <Border Grid.Row="0" 
+                Style="{StaticResource PanelStyle}"
+                Margin="20">
+            <StackPanel>
+                <TextBlock Text="Security Status"
+                         Foreground="{StaticResource TextColor}"
+                         FontSize="24"
+                         HorizontalAlignment="Center"/>
+                <TextBlock x:Name="SecurityStatus"
+                         Text="ACTIVE - All Systems Operational"
+                         Foreground="{StaticResource TextColor}"
+                         FontSize="16"
+                         HorizontalAlignment="Center"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Security Zones -->
+        <ItemsControl Grid.Row="1" 
+                      x:Name="SecurityZones"
+                      Margin="20">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border Style="{StaticResource PanelStyle}"
+                            Margin="0,0,0,10">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="{Binding Name}"
+                                     Foreground="{StaticResource TextColor}"
+                                     VerticalAlignment="Center"/>
+                            <ToggleButton Grid.Column="1"
+                                        IsChecked="{Binding IsActive}"
+                                        Style="{StaticResource QuantumButton}"/>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+        <!-- Control Buttons -->
+        <StackPanel Grid.Row="2" 
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    Margin="20">
+            <Button Content="Lock Down" 
+                    Style="{StaticResource QuantumButton}"
+                    Margin="0,0,10,0"
+                    x:Name="LockDownButton"/>
+            <Button Content="Reset Systems"
+                    Style="{StaticResource QuantumButton}"
+                    x:Name="ResetButton"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,14 @@
+<UserControl x:Class="SebastianInterface.TemperatureControlPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid>
+        <Slider x:Name="TemperatureSlider" Minimum="0" Maximum="100" />
+        <ComboBox x:Name="ModeSelector">
+            <ComboBoxItem>Heat</ComboBoxItem>
+            <ComboBoxItem>Cool</ComboBoxItem>
+            <ComboBoxItem>Auto</ComboBoxItem>
+        </ComboBox>
+        <Button x:Name="ApplyButton" Content="Apply" />
+        <Button x:Name="ResetButton" Content="Reset" />
+    </Grid>
+</UserControl>

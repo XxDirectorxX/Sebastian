@@ -1,0 +1,70 @@
+<UserControl x:Class="Sebastian.Panels.EnergyProjectionPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Background="{StaticResource BackgroundColor}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Border Grid.Row="0" Style="{StaticResource PanelStyle}">
+            <TextBlock Text="Energy Projection" 
+                     Foreground="{StaticResource TextColor}"
+                     FontSize="24" 
+                     Margin="20,10"/>
+        </Border>
+
+        <!-- Main Content -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Energy Visualization -->
+            <Canvas x:Name="EnergyCanvas" 
+                    Grid.Column="0"
+                    Style="{StaticResource FieldDisplay}"/>
+
+            <!-- Controls -->
+            <StackPanel Grid.Column="1" Margin="20">
+                <TextBlock Text="Intensity"
+                         Foreground="{StaticResource TextColor}"
+                         Margin="0,0,0,5"/>
+                <Slider x:Name="IntensitySlider" 
+                        Maximum="100"
+                        Value="50"/>
+
+                <TextBlock Text="Focus"
+                         Foreground="{StaticResource TextColor}"
+                         Margin="0,20,0,5"/>
+                <Slider x:Name="FocusSlider"
+                        Maximum="100"
+                        Value="50"/>
+
+                <TextBlock Text="Waveform"
+                         Foreground="{StaticResource TextColor}"
+                         Margin="0,20,0,5"/>
+                <Slider x:Name="WaveformSlider"
+                        Maximum="100"
+                        Value="50"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- Footer -->
+        <StackPanel Grid.Row="2" 
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    Margin="20">
+            <Button Content="Project" 
+                    Style="{StaticResource QuantumButton}"
+                    Margin="0,0,10,0"
+                    x:Name="ProjectButton"/>
+            <Button Content="Stabilize"
+                    Style="{StaticResource QuantumButton}"
+                    x:Name="StabilizeButton"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

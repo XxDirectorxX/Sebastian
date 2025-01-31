@@ -1,0 +1,47 @@
+<UserControl x:Class="SebastianInterface.ContractSealAnimations"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <Canvas>
+        <!-- Rotating Outer Ring -->
+        <Path x:Name="OuterRing" Fill="#4A1C40">
+            <Path.RenderTransform>
+                <RotateTransform x:Name="OuterRingRotation"/>
+            </Path.RenderTransform>
+            <Path.Triggers>
+                <EventTrigger RoutedEvent="Path.Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation
+                                Storyboard.TargetName="OuterRingRotation"
+                                Storyboard.TargetProperty="Angle"
+                                From="0" To="360" Duration="0:0:30"
+                                RepeatBehavior="Forever"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Path.Triggers>
+        </Path>
+
+        <!-- Pulsing Core -->
+        <Ellipse x:Name="CoreSeal" Fill="#8B0000">
+            <Ellipse.Effect>
+                <DropShadowEffect Color="#BF9B30" BlurRadius="20"/>
+            </Ellipse.Effect>
+            <Ellipse.Triggers>
+                <EventTrigger RoutedEvent="Ellipse.Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation
+                                Storyboard.TargetName="CoreSeal"
+                                Storyboard.TargetProperty="Opacity"
+                                From="0.4" To="1" Duration="0:0:2"
+                                AutoReverse="True"
+                                RepeatBehavior="Forever"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Ellipse.Triggers>
+        </Ellipse>
+    </Canvas>
+</UserControl>

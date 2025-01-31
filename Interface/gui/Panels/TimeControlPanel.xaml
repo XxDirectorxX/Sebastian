@@ -1,0 +1,70 @@
+<UserControl x:Class="Sebastian.Panels.TimeControlPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Background="{StaticResource BackgroundColor}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Border Grid.Row="0" Style="{StaticResource PanelStyle}">
+            <TextBlock Text="Time Control" 
+                     Foreground="{StaticResource TextColor}"
+                     FontSize="24" 
+                     Margin="20,10"/>
+        </Border>
+
+        <!-- Main Content -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Time Visualization -->
+            <Canvas x:Name="TimeCanvas" 
+                    Grid.Column="0"
+                    Style="{StaticResource FieldDisplay}"/>
+
+            <!-- Controls -->
+            <StackPanel Grid.Column="1" Margin="20">
+                <TextBlock Text="Flow"
+                         Foreground="{StaticResource TextColor}"
+                         Margin="0,0,0,5"/>
+                <Slider x:Name="FlowSlider" 
+                        Maximum="100"
+                        Value="50"/>
+
+                <TextBlock Text="Dilation"
+                         Foreground="{StaticResource TextColor}"
+                         Margin="0,20,0,5"/>
+                <Slider x:Name="DilationSlider"
+                        Maximum="100"
+                        Value="50"/>
+
+                <TextBlock Text="Sync"
+                         Foreground="{StaticResource TextColor}"
+                         Margin="0,20,0,5"/>
+                <Slider x:Name="SyncSlider"
+                        Maximum="100"
+                        Value="50"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- Footer -->
+        <StackPanel Grid.Row="2" 
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    Margin="20">
+            <Button Content="Manipulate" 
+                    Style="{StaticResource QuantumButton}"
+                    Margin="0,0,10,0"
+                    x:Name="ManipulateButton"/>
+            <Button Content="Reset"
+                    Style="{StaticResource QuantumButton}"
+                    x:Name="ResetButton"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

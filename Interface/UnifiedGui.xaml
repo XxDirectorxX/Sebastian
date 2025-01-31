@@ -1,0 +1,2163 @@
+<Application x:Class="Sebastian.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="interface/gui/Styles/SystemStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
+<UserControl x:Class="Sebastian.Panels.DashboardPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <Grid Background="{StaticResource BackgroundBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Dashboard Header -->
+        <TextBlock Text="Dashboard" 
+                 Style="{StaticResource HeaderText}"
+                 Margin="20,20,20,10"/>
+
+        <!-- Dashboard Content -->
+        <Grid Grid.Row="1" Margin="20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Status Panel -->
+            <Border Grid.Column="0" Grid.Row="0" 
+                    Background="{StaticResource SecondaryColor}"
+                    Margin="5">
+                <TextBlock Text="System Status" 
+                         Style="{StaticResource StatusText}"
+                         Margin="10"/>
+            </Border>
+
+            <!-- Quantum Field Monitor -->
+            <Border Grid.Column="1" Grid.Row="0"
+                    Background="{StaticResource SecondaryColor}"
+                    Margin="5">
+                <TextBlock Text="Quantum Field Strength" 
+                         Style="{StaticResource StatusText}"
+                         Margin="10"/>
+            </Border>
+
+            <!-- Reality Coherence Display -->
+            <Border Grid.Column="0" Grid.Row="1"
+                    Background="{StaticResource SecondaryColor}"
+                    Margin="5">
+                <TextBlock Text="Reality Coherence" 
+                         Style="{StaticResource StatusText}"
+                         Margin="10"/>
+            </Border>
+
+            <!-- Performance Metrics -->
+            <Border Grid.Column="1" Grid.Row="1"
+                    Background="{StaticResource SecondaryColor}"
+                    Margin="5">
+                <TextBlock Text="Performance Metrics" 
+                         Style="{StaticResource StatusText}"
+                         Margin="10"/>
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>
+<Window x:Class="Sebastian.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Sebastian" Height="800" Width="1200"
+        Background="#1E1E1E">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+    </Grid>
+</Window>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Colors -->
+    <Color x:Key="PrimaryColor">#FF1A1A1A</Color>
+    <Color x:Key="SecondaryColor">#FF2D2D2D</Color>
+    <Color x:Key="AccentColor">#FF007ACC</Color>
+    <Color x:Key="TextColor">#FFF0F0F0</Color>
+
+    <!-- Brushes -->
+    <SolidColorBrush x:Key="BackgroundBrush" Color="{StaticResource PrimaryColor}"/>
+    <SolidColorBrush x:Key="TopNavBrush" Color="{StaticResource SecondaryColor}"/>
+    <SolidColorBrush x:Key="SideNavBrush" Color="{StaticResource SecondaryColor}"/>
+    <SolidColorBrush x:Key="BottomBarBrush" Color="{StaticResource SecondaryColor}"/>
+    <SolidColorBrush x:Key="TextBrush" Color="{StaticResource TextColor}"/>
+    <SolidColorBrush x:Key="AccentBrush" Color="{StaticResource AccentColor}"/>
+
+    <!-- Text Styles -->
+    <Style x:Key="HeaderText" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="FontWeight" Value="Light"/>
+        <Setter Property="Foreground" Value="{StaticResource TextBrush}"/>
+    </Style>
+
+    <Style x:Key="StatusText" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Foreground" Value="{StaticResource TextBrush}"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
+    <!-- Button Styles -->
+    <Style x:Key="NavButton" TargetType="Button">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="{StaticResource TextBrush}"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <ContentPresenter HorizontalAlignment="Left" 
+                                        VerticalAlignment="Center"
+                                        Margin="20,0"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{StaticResource AccentBrush}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+</ResourceDictionary>
+<UserControl x:Class="Sebastian.Interface.Controls.AnalysisMonitor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Background="#1E1E1E">
+        <TextBlock Text="Analysis Status" Foreground="#D4D4D4"/>
+    </Grid>
+</UserControl>
+<UserControl x:Class="Sebastian.Interface.Controls.CoreMonitor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Background="#1E1E1E">
+        <TextBlock Text="Core Monitor" Foreground="#D4D4D4"/>
+    </Grid>
+</UserControl>
+<UserControl x:Class="Sebastian.Interface.Controls.EngineMonitor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Background="#1E1E1E">
+        <TextBlock Text="Engine Status" Foreground="#D4D4D4"/>
+    </Grid>
+</UserControl>
+<UserControl x:Class="Sebastian.Interface.Controls.FieldDisplay"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Background="#1E1E1E">
+        <TextBlock Text="Field Status" Foreground="#D4D4D4"/>
+    </Grid>
+</UserControl>
+<UserControl x:Class="Sebastian.Interface.Controls.IntegrationMonitor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Background="#1E1E1E">
+        <TextBlock Text="Integration Status" Foreground="#D4D4D4"/>
+    </Grid>
+</UserControl>
+<UserControl x:Class="Sebastian.Interface.Controls.MetricsMonitor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Background="#1E1E1E">
+        <TextBlock Text="Metrics Monitor" Foreground="#D4D4D4"/>
+    </Grid>
+</UserControl>
+<UserControl x:Class="Sebastian.Interface.Controls.ProcessingMonitor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Background="#1E1E1E">
+        <TextBlock Text="Processing Status" Foreground="#D4D4D4"/>
+    </Grid>
+</UserControl>
+<UserControl x:Class="Sebastian.Interface.Controls.ProcessMonitor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Background="#1E1E1E">
+        <TextBlock Text="Process Status" Foreground="#D4D4D4"/>
+    </Grid>
+</UserControl>
+<UserControl x:Class="Sebastian.Interface.Controls.QuantumDisplay"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Background="#1E1E1E">
+    </Grid>
+</UserControl>
+<UserControl x:Class="Sebastian.Interface.Controls.QuantumMetricsDisplay"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Border Style="{StaticResource PanelStyle}">
+        <ItemsControl x:Name="MetricsContainer">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Name}" Foreground="#D4D4D4"/>
+                        <TextBlock Text="{Binding Value}" Foreground="#D4D4D4" Margin="5,0,0,0"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </Border>
+
+</UserControl>
+<UserControl x:Class="Sebastian.Interface.Controls.QuantumMonitor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Background="#1E1E1E">
+        <TextBlock Text="Quantum Status" Foreground="#D4D4D4"/>
+    </Grid>
+</UserControl>
+<UserControl x:Class="Sebastian.Interface.Controls.StateMonitor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Background="#1E1E1E">
+        <TextBlock Text="State Monitor" Foreground="#D4D4D4"/>
+    </Grid>
+</UserControl>
+<UserControl x:Class="Sebastian.Interface.Controls.StatusMonitors"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Border Style="{StaticResource PanelStyle}">
+        <StackPanel>
+            <TextBlock Text="System Status" Foreground="#D4D4D4"/>
+            <ProgressBar Height="2" Background="#3E3E3E"/>
+        </StackPanel>
+    </Border>
+</UserControl>
+<UserControl x:Class="Sebastian.Interface.Controls.StreamMonitor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Background="#1E1E1E">
+        <TextBlock Text="Stream Monitor" Foreground="#D4D4D4"/>
+    </Grid>
+</UserControl>
+<UserControl x:Class="Sebastian.Interface.Controls.SystemMonitor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Background="#1E1E1E">
+        <TextBlock Text="System Status" Foreground="#D4D4D4"/>
+    </Grid>
+</UserControl>
+<UserControl x:Class="Sebastian.Interface.Controls.UnifiedMonitor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Background="#1E1E1E">
+        <TextBlock Text="Unified Monitor" Foreground="#D4D4D4"/>
+    </Grid>
+</UserControl>
+<UserControl x:Class="Sebastian.Interface.Controls.ValidationMonitor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Background="#1E1E1E">
+        <TextBlock Text="Validation Status" Foreground="#D4D4D4"/>
+    </Grid>
+</UserControl>
+<UserControl x:Class="Sebastian.Interface.Controls.VoiceDisplay"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Background="#1E1E1E">
+    </Grid>
+</UserControl>
+<UserControl x:Class="Sebastian.Interface.Controls.VoicePatternVisualizer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Border Style="{StaticResource PanelStyle}">
+        <Canvas x:Name="VisualizerCanvas" Background="Transparent"/>
+    </Border>
+</UserControl>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style x:Key="HolographicEffect" TargetType="Border">
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#3E3E3E" Offset="0"/>
+                    <GradientStop Color="#252526" Offset="1"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect Color="#8B0000" BlurRadius="15"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
+<Application x:Class="gui.App"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      StartupUri="MainWindow.xaml">
+             <Application.Resources>
+                 <ResourceDictionary>
+                     <ResourceDictionary.MergedDictionaries>
+                         <ResourceDictionary Source="Styles/SystemStyles.xaml"/>
+                     </ResourceDictionary.MergedDictionaries>
+                 </ResourceDictionary>
+             </Application.Resources>
+</Application>
+<UserControl x:Class="SebastianInterface.ContractSealAnimations"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <Canvas>
+        <!-- Rotating Outer Ring -->
+        <Path x:Name="OuterRing" Fill="#4A1C40">
+            <Path.RenderTransform>
+                <RotateTransform x:Name="OuterRingRotation"/>
+            </Path.RenderTransform>
+            <Path.Triggers>
+                <EventTrigger RoutedEvent="Path.Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation
+                                Storyboard.TargetName="OuterRingRotation"
+                                Storyboard.TargetProperty="Angle"
+                                From="0" To="360" Duration="0:0:30"
+                                RepeatBehavior="Forever"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Path.Triggers>
+        </Path>
+
+        <!-- Pulsing Core -->
+        <Ellipse x:Name="CoreSeal" Fill="#8B0000">
+            <Ellipse.Effect>
+                <DropShadowEffect Color="#BF9B30" BlurRadius="20"/>
+            </Ellipse.Effect>
+            <Ellipse.Triggers>
+                <EventTrigger RoutedEvent="Ellipse.Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation
+                                Storyboard.TargetName="CoreSeal"
+                                Storyboard.TargetProperty="Opacity"
+                                From="0.4" To="1" Duration="0:0:2"
+                                AutoReverse="True"
+                                RepeatBehavior="Forever"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Ellipse.Triggers>
+        </Ellipse>
+    </Canvas>
+</UserControl>
+<UserControl x:Class="SebastianInterface.DemonicEnergyVisualizer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <Grid>
+        <!-- Demonic Energy Flow -->
+        <Canvas>
+            <!-- Energy Streams -->
+            <ItemsControl ItemsSource="{Binding EnergyStreams}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Path Stroke="#8B0000" 
+                              StrokeThickness="1.5"
+                              Data="{Binding StreamPath}">
+                            <Path.Effect>
+                                <BlurEffect Radius="3"/>
+                            </Path.Effect>
+                        </Path>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <!-- Contract Seal Power Nodes -->
+            <ItemsControl ItemsSource="{Binding PowerNodes}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Ellipse Width="10" Height="10"
+                                    Fill="#BF9B30">
+                                <Ellipse.Effect>
+                                    <DropShadowEffect Color="#4A1C40" 
+                                                    BlurRadius="5"/>
+                                </Ellipse.Effect>
+                            </Ellipse>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Canvas>
+    </Grid>
+</UserControl>
+<UserControl x:Class="SebastianInterface.HolographicCommandCenter"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <Grid>
+        <!-- Central Command Interface -->
+        <Canvas>
+            <!-- Holographic Rings -->
+            <ItemsControl ItemsSource="{Binding CommandRings}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Ellipse Width="{Binding Diameter}" 
+                                Height="{Binding Diameter}"
+                                Stroke="#BF9B30"
+                                StrokeThickness="1">
+                            <Ellipse.RenderTransform>
+                                <RotateTransform Angle="{Binding Rotation}"/>
+                            </Ellipse.RenderTransform>
+                            <Ellipse.Effect>
+                                <BlurEffect Radius="2"/>
+                            </Ellipse.Effect>
+                        </Ellipse>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <!-- Command Nodes -->
+            <ItemsControl ItemsSource="{Binding CommandNodes}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Button Style="{StaticResource HolographicButtonStyle}"
+                                Command="{Binding NodeCommand}">
+                            <Button.Content>
+                                <Path Data="{Binding IconGeometry}"
+                                      Fill="#4A1C40"/>
+                            </Button.Content>
+                        </Button>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Canvas>
+    </Grid>
+</UserControl>
+<UserControl x:Class="SebastianInterface.HolographicEffects"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <Canvas>
+        <!-- Quantum Field Particles -->
+        <ItemsControl ItemsSource="{Binding FieldParticles}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Canvas/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            
+            <!-- Particle Template -->
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Ellipse Width="4" Height="4" 
+                             Fill="#BF9B30" Opacity="0.8">
+                        <Ellipse.Effect>
+                            <BlurEffect Radius="2"/>
+                        </Ellipse.Effect>
+                    </Ellipse>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+        <!-- Contract Seal Overlay -->
+        <Path Stroke="#8B0000" StrokeThickness="1.5">
+            <Path.Effect>
+                <BlurEffect Radius="4"/>
+            </Path.Effect>
+        </Path>
+    </Canvas>
+</UserControl>
+<UserControl x:Class="SebastianInterface.HolographicEnvironment"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <Grid>
+        <!-- Ambient Environment Effects -->
+        <Canvas>
+            <!-- Quantum Field Particles -->
+            <ItemsControl ItemsSource="{Binding FieldParticles}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Ellipse Width="2" Height="2"
+                                Fill="#4A1C40"
+                                Opacity="{Binding ParticleEnergy}">
+                            <Ellipse.Effect>
+                                <BlurEffect Radius="1"/>
+                            </Ellipse.Effect>
+                            <Ellipse.RenderTransform>
+                                <TranslateTransform 
+                                    X="{Binding Position.X}"
+                                    Y="{Binding Position.Y}"/>
+                            </Ellipse.RenderTransform>
+                        </Ellipse>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <!-- Reality Distortion Effects -->
+            <Path Data="{Binding DistortionPattern}"
+                  Stroke="#BF9B30"
+                  StrokeThickness="0.5">
+                <Path.Effect>
+                    <BlurEffect Radius="8"/>
+                </Path.Effect>
+            </Path>
+        </Canvas>
+    </Grid>
+</UserControl>
+<UserControl x:Class="SebastianInterface.InteractionPanel"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <Grid>
+        <!-- Main Interaction Area -->
+        <Border Background="#0A0A0F" Opacity="0.95">
+            <!-- Live Interaction Display -->
+            <DockPanel>
+                <!-- Response Area -->
+                <ScrollViewer DockPanel.Dock="Top">
+                    <ItemsControl ItemsSource="{Binding Interactions}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Message}"
+                                         Foreground="#C0C2C9"
+                                         FontFamily="Cinzel"
+                                         Margin="5">
+                                    <TextBlock.Effect>
+                                        <DropShadowEffect Color="#4A1C40" 
+                                                        BlurRadius="3"/>
+                                    </TextBlock.Effect>
+                                </TextBlock>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+
+                <!-- Input Area -->
+                <Grid DockPanel.Dock="Bottom">
+                    <TextBox Text="{Binding UserInput}"
+                             Background="#0A0A0F"
+                             Foreground="#C0C2C9"
+                             BorderBrush="#8B0000"/>
+                </Grid>
+            </DockPanel>
+        </Border>
+    </Grid>
+</UserControl>
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Holographic Button Style -->
+    <Style x:Key="HolographicButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                        <Border x:Name="ButtonBorder"
+                                BorderBrush="#BF9B30"
+                                BorderThickness="1"
+                                Background="#0A0A0F"
+                                Opacity="0.8">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"/>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="ButtonBorder" 
+                                    Property="Background" Value="#4A1C40"/>
+                            <Setter TargetName="ButtonBorder" 
+                                    Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect Color="#8B0000" 
+                                                    BlurRadius="10"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
+<Window x:Class="gui.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Sebastian Interface" Height="900" Width="1600"
+        Background="{StaticResource BackgroundColor}">
+
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="80"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="60"/>
+		</Grid.RowDefinitions>
+
+		<!-- Upper Section with Profile -->
+		<Border Grid.Row="0" Style="{StaticResource PanelStyle}">
+			<DockPanel>
+				<Image Source="/Assets/sebastian-profile.png" Width="60" Height="60" Margin="10"/>
+				<StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+					<Button Content="Home" Style="{StaticResource NavButton}" />
+					<Button Content="Control Center" Style="{StaticResource NavButton}" />
+					<Button Content="Financial Suite" Style="{StaticResource NavButton}" />
+					<Button Content="Health" Style="{StaticResource NavButton}" />
+					<Button Content="Security" Style="{StaticResource NavButton}" />
+					<Button Content="Smart Helper" Style="{StaticResource NavButton}" />
+					<Button Content="Social" Style="{StaticResource NavButton}" />
+					<Button Content="Advanced" Style="{StaticResource NavButton}" />
+					<Button Content="Voice" Style="{StaticResource NavButton}" />
+				</StackPanel>
+			</DockPanel>
+		</Border>
+
+		<!-- Main Content Area -->
+		<Grid Grid.Row="1">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="250"/>
+				<ColumnDefinition Width="*"/>
+			</Grid.ColumnDefinitions>
+
+			<!-- Left Sidebar -->
+			<Border Grid.Column="0" Style="{StaticResource PanelStyle}" Margin="5">
+				<StackPanel x:Name="SidebarPanel"/>
+			</Border>
+
+			<!-- Main Panel -->
+			<Border Grid.Column="1" Style="{StaticResource PanelStyle}" Margin="5">
+				<Grid x:Name="MainPanel"/>
+			</Border>
+		</Grid>
+
+		<!-- Lower Section -->
+		<Border Grid.Row="2" Style="{StaticResource PanelStyle}">
+			<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+				<Button Content="Quick Access" Style="{StaticResource ActionButton}" />
+				<Button Content="System Status" Style="{StaticResource ActionButton}" />
+				<Button Content="Power Control" Style="{StaticResource ActionButton}" />
+			</StackPanel>
+		</Border>
+	</Grid>
+</Window>
+<UserControl x:Class="SebastianInterface.QuantumMetricsDisplay"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <Grid>
+        <!-- Advanced Metrics Display -->
+        <Canvas>
+            <!-- Field Strength Visualizer -->
+            <Path x:Name="FieldStrengthPath" 
+                  Stroke="#8B0000" 
+                  StrokeThickness="2">
+                <Path.Data>
+                    <PathGeometry>
+                        <!-- Dynamic field strength pattern -->
+                    </PathGeometry>
+                </Path.Data>
+                <Path.Effect>
+                    <DropShadowEffect Color="#BF9B30" 
+                                    BlurRadius="10"/>
+                </Path.Effect>
+            </Path>
+
+            <!-- Reality Coherence Matrix -->
+            <ItemsControl ItemsSource="{Binding CoherencePoints}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Ellipse Width="3" Height="3"
+                                Fill="#4A1C40"
+                                Opacity="{Binding CoherenceValue}">
+                            <Ellipse.Effect>
+                                <BlurEffect Radius="1"/>
+                            </Ellipse.Effect>
+                        </Ellipse>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Canvas>
+    </Grid>
+</UserControl>
+<UserControl x:Class="SebastianInterface.QuantumVisualizer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <Grid>
+        <!-- Field Strength Display -->
+        <Canvas x:Name="FieldDisplay">
+            <Rectangle Width="300" Height="300">
+                <Rectangle.Fill>
+                    <RadialGradientBrush>
+                        <GradientStop Color="#4A1C40" Offset="0"/>
+                        <GradientStop Color="#0A0A0F" Offset="1"/>
+                    </RadialGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+            
+            <!-- Quantum Matrix Visualization -->
+            <ItemsControl ItemsSource="{Binding MatrixPoints}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <Canvas/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                
+                <!-- Matrix Point Template -->
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Line X1="{Binding X1}" Y1="{Binding Y1}"
+                              X2="{Binding X2}" Y2="{Binding Y2}"
+                              Stroke="#C0C2C9" StrokeThickness="0.5"
+                              Opacity="{Binding Energy}"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Canvas>
+    </Grid>
+</UserControl>
+<UserControl x:Class="SebastianInterface.SebastianRenderer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <Grid>
+        <!-- 3D Model Viewport -->
+        <Viewport3D>
+            <Viewport3D.Camera>
+                <PerspectiveCamera Position="0,0,2" LookDirection="0,0,-1" UpDirection="0,1,0"/>
+            </Viewport3D.Camera>
+            
+            <!-- Sebastian Model -->
+            <ModelVisual3D>
+                <ModelVisual3D.Content>
+                    <GeometryModel3D>
+                        <!-- High-detail Sebastian mesh -->
+                    </GeometryModel3D>
+                </ModelVisual3D.Content>
+            </ModelVisual3D>
+        </Viewport3D>
+    </Grid>
+</UserControl>
+<UserControl x:Class="SebastianInterface.SecurityDisplay"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <Grid>
+        <!-- Military-Grade Security Monitor -->
+        <Border BorderBrush="#8B0000" BorderThickness="1" 
+                Background="#0A0A0F" Opacity="0.9">
+            
+            <!-- Security Status Panels -->
+            <ItemsControl ItemsSource="{Binding SecurityZones}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="5">
+                            <!-- Zone Indicator -->
+                            <Ellipse Width="12" Height="12"
+                                     Fill="{Binding StatusColor}">
+                                <Ellipse.Effect>
+                                    <DropShadowEffect Color="#BF9B30" 
+                                                    BlurRadius="10"/>
+                                </Ellipse.Effect>
+                            </Ellipse>
+                            
+                            <!-- Status Text -->
+                            <TextBlock Text="{Binding ZoneName}"
+                                       Foreground="#C0C2C9"
+                                       FontFamily="Cinzel"/>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Border>
+    </Grid>
+</UserControl>
+<UserControl x:Class="SebastianInterface.StatusMonitors"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <Grid>
+        <!-- Quantum Field Monitor -->
+        <Border BorderBrush="#4A1C40" BorderThickness="1">
+            <StackPanel>
+                <!-- Field Strength Display -->
+                <TextBlock Text="{Binding FieldStrength}"
+                           Foreground="#C0C2C9"
+                           FontFamily="Cinzel"/>
+                <ProgressBar Value="{Binding FieldStrength}"
+                           Maximum="46.97871376"
+                           Height="4"
+                           Foreground="#BF9B30"/>
+                
+                <!-- Reality Coherence -->
+                <TextBlock Text="{Binding RealityCoherence}"
+                           Foreground="#C0C2C9"
+                           FontFamily="Cinzel"/>
+                <ProgressBar Value="{Binding RealityCoherence}"
+                           Maximum="1.618033988749895"
+                           Height="4"
+                           Foreground="#8B0000"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>
+<UserControl x:Class="SebastianInterface.SystemControls"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <Grid>
+        <!-- Holographic Control Panel -->
+        <Border Background="#0A0A0F" Opacity="0.9">
+            <!-- Command Interface -->
+            <StackPanel>
+                <!-- Voice Control Status -->
+                <Border BorderBrush="#BF9B30" BorderThickness="1">
+                    <TextBlock Text="{Binding VoiceStatus}"
+                             Foreground="#C0C2C9"
+                             FontFamily="Cinzel"/>
+                </Border>
+
+                <!-- System Commands -->
+                <ItemsControl ItemsSource="{Binding CommandButtons}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Button Content="{Binding CommandName}"
+                                    Background="#4A1C40"
+                                    Foreground="#C0C2C9"
+                                    BorderBrush="#8B0000">
+                                <Button.Effect>
+                                    <DropShadowEffect Color="#BF9B30" 
+                                                    BlurRadius="5"/>
+                                </Button.Effect>
+                            </Button>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>
+<UserControl x:Class="SebastianInterface.TemperatureControlPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid>
+        <Slider x:Name="TemperatureSlider" Minimum="0" Maximum="100" />
+        <ComboBox x:Name="ModeSelector">
+            <ComboBoxItem>Heat</ComboBoxItem>
+            <ComboBoxItem>Cool</ComboBoxItem>
+            <ComboBoxItem>Auto</ComboBoxItem>
+        </ComboBox>
+        <Button x:Name="ApplyButton" Content="Apply" />
+        <Button x:Name="ResetButton" Content="Reset" />
+    </Grid>
+</UserControl>
+<UserControl x:Class="SebastianInterface.TimeControlPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid>
+        <Slider x:Name="TimeFlowSlider" Minimum="0" Maximum="100" />
+        <Slider x:Name="TimeDilationSlider" Minimum="0" Maximum="100" />
+        <Button x:Name="ManipulateButton" Content="Manipulate" />
+        <Button x:Name="ResetButton" Content="Reset" />
+        <Button x:Name="SyncButton" Content="Sync" />
+    </Grid>
+</UserControl>
+<UserControl x:Class="SebastianInterface.VoicePatternVisualizer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <Grid>
+        <!-- Voice Waveform Display -->
+        <Canvas x:Name="WaveformCanvas">
+            <Polyline Stroke="#4A1C40" StrokeThickness="2"
+                      Points="{Binding WaveformPoints}">
+                <Polyline.Effect>
+                    <BlurEffect Radius="1"/>
+                </Polyline.Effect>
+            </Polyline>
+        </Canvas>
+
+        <!-- Contract Seal Resonance -->
+        <Canvas x:Name="ResonanceDisplay">
+            <Path Data="{Binding ContractSealPath}"
+                  Stroke="#BF9B30" StrokeThickness="1">
+                <Path.Effect>
+                    <DropShadowEffect Color="#8B0000" 
+                                    BlurRadius="15"/>
+                </Path.Effect>
+            </Path>
+        </Canvas>
+    </Grid>
+</UserControl>
+<UserControl x:Class="gui.Panels.AdvancedAbilitiesPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="#1E1E1E">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <!-- System Status -->
+        <Border Background="#252526" Padding="20">
+            <StackPanel>
+                <TextBlock Text="Advanced Abilities" Foreground="#D4D4D4" FontSize="24"/>
+                <!-- Performance indicators -->
+            </StackPanel>
+        </Border>
+        
+        <!-- Abilities Grid -->
+        <UniformGrid Grid.Row="1" Columns="2" Rows="2" Margin="20">
+            <Border Background="#252526" Margin="5">
+                <StackPanel>
+                    <TextBlock Text="Reality Manipulation" Foreground="#D4D4D4"/>
+                    <!-- Reality controls -->
+                </StackPanel>
+            </Border>
+            <Border Background="#252526" Margin="5">
+                <StackPanel>
+                    <TextBlock Text="Time Control" Foreground="#D4D4D4"/>
+                    <!-- Time controls -->
+                </StackPanel>
+            </Border>
+            <Border Background="#252526" Margin="5">
+                <StackPanel>
+                    <TextBlock Text="Energy Projection" Foreground="#D4D4D4"/>
+                    <!-- Energy controls -->
+                </StackPanel>
+            </Border>
+            <Border Background="#252526" Margin="5">
+                <StackPanel>
+                    <TextBlock Text="System Optimization" Foreground="#D4D4D4"/>
+                    <!-- Optimization controls -->
+                </StackPanel>
+            </Border>
+        </UniformGrid>
+    </Grid>
+</UserControl>
+<UserControl x:Class="Sebastian.Panels.AdvancedPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Border Style="{StaticResource PanelStyle}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Reality Manipulation" Style="{StaticResource QuantumButton}"/>
+                <Button Content="Time Control" Style="{StaticResource QuantumButton}"/>
+                <Button Content="Energy Projection" Style="{StaticResource QuantumButton}"/>
+            </StackPanel>
+
+            <Canvas x:Name="QuantumVisualizer" Grid.Row="1"/>
+        </Grid>
+    </Border>
+</UserControl>
+<UserControl x:Class="Sebastian.Panels.ContractSealPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Background="{StaticResource BackgroundColor}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Border Grid.Row="0" Style="{StaticResource PanelStyle}">
+            <TextBlock Text="Contract Seal" 
+                     Foreground="{StaticResource TextColor}"
+                     FontSize="24" 
+                     Margin="20,10"/>
+        </Border>
+
+        <!-- Main Content -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Seal Visualization -->
+            <Canvas x:Name="SealCanvas" 
+                    Grid.Column="0"
+                    Style="{StaticResource FieldDisplay}"/>
+
+            <!-- Controls -->
+            <StackPanel Grid.Column="1" Margin="20">
+                <TextBlock Text="Power Level"
+                         Foreground="{StaticResource TextColor}"
+                         Margin="0,0,0,5"/>
+                <Slider x:Name="PowerSlider" 
+                        Maximum="100"
+                        Value="50"/>
+
+                <TextBlock Text="Intensity"
+                         Foreground="{StaticResource TextColor}"
+                         Margin="0,20,0,5"/>
+                <Slider x:Name="IntensitySlider"
+                        Maximum="100"
+                        Value="50"/>
+
+                <TextBlock Text="Resonance"
+                         Foreground="{StaticResource TextColor}"
+                         Margin="0,20,0,5"/>
+                <Slider x:Name="ResonanceSlider"
+                        Maximum="100"
+                        Value="50"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- Footer -->
+        <StackPanel Grid.Row="2" 
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    Margin="20">
+            <Button Content="Activate" 
+                    Style="{StaticResource QuantumButton}"
+                    Margin="0,0,10,0"
+                    x:Name="ActivateButton"/>
+            <Button Content="Synchronize"
+                    Style="{StaticResource QuantumButton}"
+                    x:Name="SynchronizeButton"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
+<UserControl x:Class="Sebastian.Panels.ControlCenterPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Border Style="{StaticResource PanelStyle}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Width="60" 
+                        Background="{StaticResource SecondaryBackgroundColor}">
+                <Button Style="{StaticResource QuantumButton}"
+                        Content="🏠" x:Name="HomeButton"/>
+                <Button Style="{StaticResource QuantumButton}"
+                        Content="💡" x:Name="LightsButton"/>
+                <Button Style="{StaticResource QuantumButton}"
+                        Content="🌡️" x:Name="TempButton"/>
+                <Button Style="{StaticResource QuantumButton}"
+                        Content="🔒" x:Name="SecurityButton"/>
+            </StackPanel>
+
+            <ContentControl Grid.Column="1" 
+                          x:Name="ControlContent"/>
+        </Grid>
+    </Border>
+</UserControl>
+<UserControl x:Class="Sebastian.Panels.DashboardPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Background="{StaticResource BackgroundColor}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Profile Section -->
+        <Border Grid.Row="0" Style="{StaticResource PanelStyle}">
+            <StackPanel Orientation="Horizontal" Margin="20">
+                <Image Source="/Assets/sebastian-profile.png" 
+                       Height="100" Width="100"/>
+                <StackPanel Margin="20,0,0,0">
+                    <TextBlock Text="Sebastian Michaelis"
+                             Foreground="{StaticResource TextColor}"
+                             FontSize="24"/>
+                    <TextBlock Text="Quantum System Status: Active"
+                             Foreground="{StaticResource TextColor}"
+                             FontSize="16"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+        <!-- Main Dashboard Content -->
+        <Grid Grid.Row="1" Margin="20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Quantum Field Display -->
+            <Border Grid.Column="0" Grid.Row="0" 
+                    Style="{StaticResource PanelStyle}"
+                    Margin="0,0,10,10">
+                <Canvas x:Name="QuantumFieldCanvas"/>
+            </Border>
+
+            <!-- Status Monitor -->
+            <Border Grid.Column="1" Grid.Row="0"
+                    Style="{StaticResource PanelStyle}"
+                    Margin="10,0,0,10">
+                <ItemsControl x:Name="StatusList"/>
+            </Border>
+
+            <!-- Task Overview -->
+            <Border Grid.Column="0" Grid.Row="1"
+                    Style="{StaticResource PanelStyle}"
+                    Margin="0,10,10,0">
+                <ItemsControl x:Name="TaskList"/>
+            </Border>
+
+            <!-- System Health -->
+            <Border Grid.Column="1" Grid.Row="1"
+                    Style="{StaticResource PanelStyle}"
+                    Margin="10,10,0,0">
+                <Canvas x:Name="HealthCanvas"/>
+            </Border>
+        </Grid>
+
+        <!-- Control Panel -->
+        <Border Grid.Row="2" Style="{StaticResource PanelStyle}">
+            <StackPanel Orientation="Horizontal" 
+                        HorizontalAlignment="Right"
+                        Margin="20">
+                <Button Content="Synchronize Systems" 
+                        Style="{StaticResource QuantumButton}"
+                        Margin="0,0,10,0"
+                        x:Name="SyncButton"/>
+                <Button Content="Optimize Performance"
+                        Style="{StaticResource QuantumButton}"
+                        x:Name="OptimizeButton"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>
+<UserControl x:Class="gui.Panels.DemonicPowersPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="#1E1E1E">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <!-- Power Status -->
+        <Border Background="#252526" Padding="20">
+            <StackPanel>
+                <TextBlock Text="Demonic Powers" Foreground="#D4D4D4" FontSize="24"/>
+                <!-- Power indicators -->
+            </StackPanel>
+        </Border>
+        
+        <!-- Powers Grid -->
+        <UniformGrid Grid.Row="1" Columns="2" Rows="2" Margin="20">
+            <Border Background="#252526" Margin="5">
+                <StackPanel>
+                    <TextBlock Text="Contract Seal" Foreground="#D4D4D4"/>
+                    <!-- Seal controls -->
+                </StackPanel>
+            </Border>
+            <Border Background="#252526" Margin="5">
+                <StackPanel>
+                    <TextBlock Text="Reality Warping" Foreground="#D4D4D4"/>
+                    <!-- Reality controls -->
+                </StackPanel>
+            </Border>
+            <Border Background="#252526" Margin="5">
+                <StackPanel>
+                    <TextBlock Text="Power Manifestation" Foreground="#D4D4D4"/>
+                    <!-- Power controls -->
+                </StackPanel>
+            </Border>
+            <Border Background="#252526" Margin="5">
+                <StackPanel>
+                    <TextBlock Text="Demonic Essence" Foreground="#D4D4D4"/>
+                    <!-- Essence controls -->
+                </StackPanel>
+            </Border>
+        </UniformGrid>
+    </Grid>
+</UserControl>
+<UserControl x:Class="Sebastian.Panels.EnergyProjectionPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Background="{StaticResource BackgroundColor}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Border Grid.Row="0" Style="{StaticResource PanelStyle}">
+            <TextBlock Text="Energy Projection" 
+                     Foreground="{StaticResource TextColor}"
+                     FontSize="24" 
+                     Margin="20,10"/>
+        </Border>
+
+        <!-- Main Content -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Energy Visualization -->
+            <Canvas x:Name="EnergyCanvas" 
+                    Grid.Column="0"
+                    Style="{StaticResource FieldDisplay}"/>
+
+            <!-- Controls -->
+            <StackPanel Grid.Column="1" Margin="20">
+                <TextBlock Text="Intensity"
+                         Foreground="{StaticResource TextColor}"
+                         Margin="0,0,0,5"/>
+                <Slider x:Name="IntensitySlider" 
+                        Maximum="100"
+                        Value="50"/>
+
+                <TextBlock Text="Focus"
+                         Foreground="{StaticResource TextColor}"
+                         Margin="0,20,0,5"/>
+                <Slider x:Name="FocusSlider"
+                        Maximum="100"
+                        Value="50"/>
+
+                <TextBlock Text="Waveform"
+                         Foreground="{StaticResource TextColor}"
+                         Margin="0,20,0,5"/>
+                <Slider x:Name="WaveformSlider"
+                        Maximum="100"
+                        Value="50"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- Footer -->
+        <StackPanel Grid.Row="2" 
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    Margin="20">
+            <Button Content="Project" 
+                    Style="{StaticResource QuantumButton}"
+                    Margin="0,0,10,0"
+                    x:Name="ProjectButton"/>
+            <Button Content="Stabilize"
+                    Style="{StaticResource QuantumButton}"
+                    x:Name="StabilizeButton"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
+<UserControl x:Class="Sebastian.Panels.FinancialPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Border Style="{StaticResource PanelStyle}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="Financial Overview"
+                     Foreground="{StaticResource TextColor}"
+                     FontSize="24"
+                     Margin="20"/>
+
+            <ItemsControl Grid.Row="1" 
+                         x:Name="FinancialDisplay"
+                         Margin="20"/>
+
+            <StackPanel Grid.Row="2" 
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Right"
+                        Margin="20">
+                <Button Content="Generate Report" 
+                        Style="{StaticResource QuantumButton}"
+                        x:Name="ReportButton"/>
+            </StackPanel>
+        </Grid>
+    </Border>
+</UserControl>
+<UserControl x:Class="Sebastian.Panels.HealthPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Border Style="{StaticResource PanelStyle}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Width="200" Background="{StaticResource SecondaryBackgroundColor}">
+                <Button Content="Physical Health" Style="{StaticResource QuantumButton}"/>
+                <Button Content="Mental Wellbeing" Style="{StaticResource QuantumButton}"/>
+                <Button Content="PTSD Monitoring" Style="{StaticResource QuantumButton}"/>
+            </StackPanel>
+
+            <Canvas x:Name="HealthVisualizer" Grid.Column="1"/>
+        </Grid>
+    </Border>
+</UserControl>
+<UserControl x:Class="gui.Panels.HealthWellnessPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="#1E1E1E">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <!-- Left Sidebar -->
+        <StackPanel Grid.Column="0" Background="#252526">
+            <Button Content="Physical Health"/>
+            <Button Content="Mental Well-being"/>
+            <Button Content="PTSD Monitoring"/>
+            <Button Content="Health Records"/>
+        </StackPanel>
+        
+        <!-- Main Content -->
+        <Grid Grid.Column="1" Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            
+            <!-- Health data visualization -->
+            <Border Grid.Row="1" Background="#252526">
+                <!-- Charts and graphs -->
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>
+<UserControl x:Class="Sebastian.Panels.LightingControlPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Background="{StaticResource BackgroundColor}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Room Selection -->
+        <ComboBox Grid.Row="0"
+                  Margin="20"
+                  x:Name="RoomSelector">
+            <ComboBoxItem Content="Living Room"/>
+            <ComboBoxItem Content="Study"/>
+            <ComboBoxItem Content="Bedroom"/>
+            <ComboBoxItem Content="Kitchen"/>
+        </ComboBox>
+
+        <!-- Light Controls -->
+        <Grid Grid.Row="1" Margin="20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Brightness Control -->
+            <StackPanel Grid.Column="0" Margin="0,0,10,0">
+                <TextBlock Text="Brightness"
+                         Foreground="{StaticResource TextColor}"
+                         Margin="0,0,0,10"/>
+                <Slider x:Name="BrightnessSlider"
+                        Maximum="100"
+                        Value="50"
+                        Orientation="Vertical"
+                        Height="200"/>
+            </StackPanel>
+
+            <!-- Color Temperature -->
+            <StackPanel Grid.Column="1" Margin="10,0,0,0">
+                <TextBlock Text="Color Temperature"
+                         Foreground="{StaticResource TextColor}"
+                         Margin="0,0,0,10"/>
+                <Slider x:Name="ColorTempSlider"
+                        Maximum="100"
+                        Value="50"
+                        Orientation="Vertical"
+                        Height="200"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>
+<UserControl x:Class="gui.Panels.PowerManagementPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="#1E1E1E">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <!-- Power Status -->
+        <Border Background="#252526" Padding="20">
+            <StackPanel>
+                <TextBlock Text="Power Management" Foreground="#D4D4D4" FontSize="24"/>
+                <ProgressBar Height="2" Margin="0,10" Background="#3E3E3E"/>
+            </StackPanel>
+        </Border>
+        
+        <!-- Power Grid -->
+        <UniformGrid Grid.Row="1" Columns="2" Rows="2" Margin="20">
+            <Border Background="#252526" Margin="5">
+                <StackPanel>
+                    <TextBlock Text="Energy Flow" Foreground="#D4D4D4"/>
+                    <Canvas x:Name="EnergyCanvas"/>
+                </StackPanel>
+            </Border>
+            <Border Background="#252526" Margin="5">
+                <StackPanel>
+                    <TextBlock Text="Power Distribution" Foreground="#D4D4D4"/>
+                    <Canvas x:Name="DistributionCanvas"/>
+                </StackPanel>
+            </Border>
+            <Border Background="#252526" Margin="5">
+                <StackPanel>
+                    <TextBlock Text="Field Strength" Foreground="#D4D4D4"/>
+                    <Canvas x:Name="FieldCanvas"/>
+                </StackPanel>
+            </Border>
+            <Border Background="#252526" Margin="5">
+                <StackPanel>
+                    <TextBlock Text="Quantum Resonance" Foreground="#D4D4D4"/>
+                    <Canvas x:Name="ResonanceCanvas"/>
+                </StackPanel>
+            </Border>
+        </UniformGrid>
+    </Grid>
+</UserControl>
+<UserControl x:Class="Sebastian.Panels.RealityWarpPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Background="{StaticResource BackgroundColor}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Border Grid.Row="0" Style="{StaticResource PanelStyle}">
+            <TextBlock Text="Reality Warp" 
+                     Foreground="{StaticResource TextColor}"
+                     FontSize="24" 
+                     Margin="20,10"/>
+        </Border>
+
+        <!-- Main Content -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Reality Visualization -->
+            <Canvas x:Name="RealityCanvas" 
+                    Grid.Column="0"
+                    Style="{StaticResource FieldDisplay}"/>
+
+            <!-- Controls -->
+            <StackPanel Grid.Column="1" Margin="20">
+                <TextBlock Text="Distortion"
+                         Foreground="{StaticResource TextColor}"
+                         Margin="0,0,0,5"/>
+                <Slider x:Name="DistortionSlider" 
+                        Maximum="100"
+                        Value="50"/>
+
+                <TextBlock Text="Stability"
+                         Foreground="{StaticResource TextColor}"
+                         Margin="0,20,0,5"/>
+                <Slider x:Name="StabilitySlider"
+                        Maximum="100"
+                        Value="50"/>
+
+                <TextBlock Text="Coherence"
+                         Foreground="{StaticResource TextColor}"
+                         Margin="0,20,0,5"/>
+                <Slider x:Name="CoherenceSlider"
+                        Maximum="100"
+                        Value="50"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- Footer -->
+        <StackPanel Grid.Row="2" 
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    Margin="20">
+            <Button Content="Warp" 
+                    Style="{StaticResource QuantumButton}"
+                    Margin="0,0,10,0"
+                    x:Name="WarpButton"/>
+            <Button Content="Normalize"
+                    Style="{StaticResource QuantumButton}"
+                    x:Name="NormalizeButton"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
+<UserControl x:Class="Sebastian.Panels.SecurityControlPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Background="{StaticResource BackgroundColor}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Status Display -->
+        <Border Grid.Row="0" 
+                Style="{StaticResource PanelStyle}"
+                Margin="20">
+            <StackPanel>
+                <TextBlock Text="Security Status"
+                         Foreground="{StaticResource TextColor}"
+                         FontSize="24"
+                         HorizontalAlignment="Center"/>
+                <TextBlock x:Name="SecurityStatus"
+                         Text="ACTIVE - All Systems Operational"
+                         Foreground="{StaticResource TextColor}"
+                         FontSize="16"
+                         HorizontalAlignment="Center"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Security Zones -->
+        <ItemsControl Grid.Row="1" 
+                      x:Name="SecurityZones"
+                      Margin="20">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border Style="{StaticResource PanelStyle}"
+                            Margin="0,0,0,10">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="{Binding Name}"
+                                     Foreground="{StaticResource TextColor}"
+                                     VerticalAlignment="Center"/>
+                            <ToggleButton Grid.Column="1"
+                                        IsChecked="{Binding IsActive}"
+                                        Style="{StaticResource QuantumButton}"/>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+        <!-- Control Buttons -->
+        <StackPanel Grid.Row="2" 
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    Margin="20">
+            <Button Content="Lock Down" 
+                    Style="{StaticResource QuantumButton}"
+                    Margin="0,0,10,0"
+                    x:Name="LockDownButton"/>
+            <Button Content="Reset Systems"
+                    Style="{StaticResource QuantumButton}"
+                    x:Name="ResetButton"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
+<UserControl x:Class="Sebastian.Panels.SecurityPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Border Style="{StaticResource PanelStyle}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="Security Status" 
+                     Foreground="{StaticResource TextColor}"
+                     FontSize="24"
+                     Margin="20"/>
+
+            <ItemsControl Grid.Row="1" x:Name="SecurityFeed"/>
+        </Grid>
+    </Border>
+</UserControl>
+<UserControl x:Class="gui.Panels.SettingsPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="#1E1E1E">
+    <Grid Margin="20">
+        <StackPanel>
+            <TextBlock Text="Settings" Foreground="#D4D4D4" FontSize="24" Margin="0,0,0,20"/>
+            
+            <GroupBox Header="Theme Settings" Foreground="#D4D4D4">
+                <StackPanel Margin="10">
+                    <ComboBox Margin="0,5"/>
+                </StackPanel>
+            </GroupBox>
+            
+            <GroupBox Header="Functionality Settings" Foreground="#D4D4D4">
+                <StackPanel Margin="10">
+                    <CheckBox Content="Enable Advanced Features" Foreground="#D4D4D4"/>
+                    <CheckBox Content="Enable Voice Commands" Foreground="#D4D4D4"/>
+                </StackPanel>
+            </GroupBox>
+            
+            <GroupBox Header="Personal Preferences" Foreground="#D4D4D4">
+                <StackPanel Margin="10">
+                    <Slider Margin="0,5"/>
+                    <Slider Margin="0,5"/>
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
+    </Grid>
+</UserControl>
+<UserControl x:Class="Sebastian.Panels.SmartHelperPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Border Style="{StaticResource PanelStyle}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <ScrollViewer>
+                <ItemsControl x:Name="ConversationDisplay"/>
+            </ScrollViewer>
+
+            <TextBox Grid.Row="1" 
+                     x:Name="InputBox"
+                     Style="{StaticResource QuantumTextBox}"/>
+        </Grid>
+    </Border>
+</UserControl>
+<UserControl x:Class="gui.Panels.SocialFamilyPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="#1E1E1E">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <!-- Left Sidebar -->
+        <StackPanel Grid.Column="0" Background="#252526">
+            <TextBlock Text="Family Members" Foreground="#D4D4D4" Padding="10"/>
+            <ListBox Background="Transparent"/>
+            <TextBlock Text="Social Circles" Foreground="#D4D4D4" Padding="10"/>
+            <ListBox Background="Transparent"/>
+            <TextBlock Text="Events" Foreground="#D4D4D4" Padding="10"/>
+            <ListBox Background="Transparent"/>
+        </StackPanel>
+        
+        <!-- Main Content -->
+        <Grid Grid.Column="1" Margin="20">
+            <Calendar Background="#252526" Foreground="#D4D4D4"/>
+        </Grid>
+    </Grid>
+</UserControl>
+<UserControl x:Class="Sebastian.Panels.SocialPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Border Style="{StaticResource PanelStyle}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <ListBox x:Name="ContactsList"
+                     Background="Transparent"
+                     BorderThickness="0"/>
+
+            <ContentControl Grid.Column="1" 
+                          x:Name="InteractionSpace"/>
+        </Grid>
+    </Border>
+</UserControl>
+<UserControl x:Class="Sebastian.Panels.TemperatureControlPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Background="{StaticResource BackgroundColor}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Temperature Display -->
+        <Border Grid.Row="0" 
+                Style="{StaticResource PanelStyle}"
+                Margin="20">
+            <TextBlock x:Name="TemperatureDisplay"
+                     Text="72°F"
+                     Foreground="{StaticResource TextColor}"
+                     FontSize="48"
+                     HorizontalAlignment="Center"/>
+        </Border>
+
+        <!-- Controls -->
+        <Grid Grid.Row="1" Margin="20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Temperature Slider -->
+            <Slider Grid.Column="1"
+                    x:Name="TempSlider"
+                    Orientation="Vertical"
+                    Minimum="60"
+                    Maximum="80"
+                    Value="72"
+                    Height="200"/>
+        </Grid>
+
+        <!-- Mode Selection -->
+        <StackPanel Grid.Row="2" 
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    Margin="20">
+            <RadioButton Content="Heat" 
+                        Margin="10"
+                        x:Name="HeatMode"/>
+            <RadioButton Content="Cool" 
+                        Margin="10"
+                        x:Name="CoolMode"/>
+            <RadioButton Content="Auto" 
+                        Margin="10"
+                        x:Name="AutoMode"
+                        IsChecked="True"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
+<UserControl x:Class="Sebastian.Panels.TimeControlPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Background="{StaticResource BackgroundColor}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Border Grid.Row="0" Style="{StaticResource PanelStyle}">
+            <TextBlock Text="Time Control" 
+                     Foreground="{StaticResource TextColor}"
+                     FontSize="24" 
+                     Margin="20,10"/>
+        </Border>
+
+        <!-- Main Content -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Time Visualization -->
+            <Canvas x:Name="TimeCanvas" 
+                    Grid.Column="0"
+                    Style="{StaticResource FieldDisplay}"/>
+
+            <!-- Controls -->
+            <StackPanel Grid.Column="1" Margin="20">
+                <TextBlock Text="Flow"
+                         Foreground="{StaticResource TextColor}"
+                         Margin="0,0,0,5"/>
+                <Slider x:Name="FlowSlider" 
+                        Maximum="100"
+                        Value="50"/>
+
+                <TextBlock Text="Dilation"
+                         Foreground="{StaticResource TextColor}"
+                         Margin="0,20,0,5"/>
+                <Slider x:Name="DilationSlider"
+                        Maximum="100"
+                        Value="50"/>
+
+                <TextBlock Text="Sync"
+                         Foreground="{StaticResource TextColor}"
+                         Margin="0,20,0,5"/>
+                <Slider x:Name="SyncSlider"
+                        Maximum="100"
+                        Value="50"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- Footer -->
+        <StackPanel Grid.Row="2" 
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    Margin="20">
+            <Button Content="Manipulate" 
+                    Style="{StaticResource QuantumButton}"
+                    Margin="0,0,10,0"
+                    x:Name="ManipulateButton"/>
+            <Button Content="Reset"
+                    Style="{StaticResource QuantumButton}"
+                    x:Name="ResetButton"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
+<UserControl x:Class="gui.Panels.VoiceCommunicationPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="#1E1E1E">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <!-- Left Sidebar -->
+        <StackPanel Grid.Column="0" Background="#252526">
+            <Button Content="Voice Chat"/>
+            <Button Content="Video Chat"/>
+            <Button Content="Text Chat"/>
+            <Button Content="Voice Processing"/>
+        </StackPanel>
+        
+        <!-- Main Communication Area -->
+        <Grid Grid.Column="1" Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            
+            <Border Background="#252526">
+                <!-- Chat interface -->
+            </Border>
+            
+            <DockPanel Grid.Row="1" LastChildFill="True" Margin="0,20,0,0">
+                <Button DockPanel.Dock="Right" Content="Send"/>
+                <TextBox Background="#1E1E1E" Foreground="#D4D4D4"/>
+            </DockPanel>
+        </Grid>
+    </Grid>
+</UserControl>
+<UserControl x:Class="Sebastian.Panels.VoicePanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Border Style="{StaticResource PanelStyle}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Canvas x:Name="VoicePatternVisualizer"/>
+            
+            <StackPanel Grid.Row="1" 
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        Margin="20">
+                <Button Content="Start Voice" 
+                        Style="{StaticResource QuantumButton}"
+                        x:Name="StartVoiceButton"/>
+                <Button Content="Stop Voice" 
+                        Style="{StaticResource QuantumButton}"
+                        x:Name="StopVoiceButton"/>
+            </StackPanel>
+        </Grid>
+    </Border>
+</UserControl>
+<UserControl x:Class="Sebastian.Panels.VoicePatternVisualizer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Background="{StaticResource BackgroundColor}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Visualization Area -->
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Waveform Display -->
+            <Canvas x:Name="WaveformCanvas" 
+                    Grid.Row="0"
+                    Style="{StaticResource FieldDisplay}"/>
+
+            <!-- Resonance Display -->
+            <Canvas x:Name="ResonanceDisplay"
+                    Grid.Row="1"
+                    Style="{StaticResource FieldDisplay}"/>
+        </Grid>
+
+        <!-- Controls -->
+        <StackPanel Grid.Row="1" 
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    Margin="20">
+            <Button Content="Analyze" 
+                    Style="{StaticResource QuantumButton}"
+                    Margin="0,0,10,0"/>
+            <Button Content="Synchronize"
+                    Style="{StaticResource QuantumButton}"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
+<Application x:Class="Sebastian.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Sebastian"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+         
+    </Application.Resources>
+</Application>
+<Window x:Class="Sebastian.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:Sebastian.Panels"
+        Title="Sebastian Interface" Height="800" Width="1200"
+        Background="{StaticResource BackgroundColor}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Top Navigation -->
+        <Border Grid.Row="0" Style="{StaticResource PanelStyle}">
+            <local:DashboardPanel/>
+        </Border>
+
+        <!-- Main Content Area -->
+        <ItemsControl x:Name="ParticleSystem" Grid.Row="1"/>
+        <Canvas x:Name="EnvironmentLayer" Grid.Row="1"/>
+
+        <!-- Control Buttons -->
+        <StackPanel Grid.Row="2" 
+                    Orientation="Horizontal" 
+                    HorizontalAlignment="Right"
+                    Margin="20">
+            <Button Content="Initialize" Style="{StaticResource QuantumButton}"
+                    x:Name="InitializeButton" Margin="0,0,10,0"/>
+            <Button Content="Engage" Style="{StaticResource QuantumButton}"
+                    x:Name="EngageButton" Margin="0,0,10,0"/>
+            <Button Content="Terminate" Style="{StaticResource QuantumButton}"
+                    x:Name="TerminateButton"/>
+        </StackPanel>
+    </Grid>
+</Window>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <!-- Quantum Field Animation -->
+    <Storyboard x:Key="FieldPulse">
+        <DoubleAnimation 
+            Storyboard.TargetProperty="Opacity"
+            From="0.4" To="1.0" Duration="0:0:2"
+            AutoReverse="True" RepeatBehavior="Forever"/>
+    </Storyboard>
+
+    <!-- Particle System Animation -->
+    <Storyboard x:Key="ParticleFlow">
+        <DoubleAnimation 
+            Storyboard.TargetProperty="Opacity"
+            From="0.0" To="1.0" Duration="0:0:0.5"/>
+    </Storyboard>
+
+    <!-- Status Update Animation -->
+    <Storyboard x:Key="StatusUpdate">
+        <ColorAnimation 
+            Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)"
+            From="#D4D4D4" To="#4A1C40" Duration="0:0:0.3"
+            AutoReverse="True"/>
+    </Storyboard>
+
+    <!-- Button Hover Animation -->
+    <Storyboard x:Key="ButtonHover">
+        <ColorAnimation 
+            Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+            To="#3E3E3E" Duration="0:0:0.2"/>
+    </Storyboard>
+
+    <!-- Panel Transition Animation -->
+    <Storyboard x:Key="PanelTransition">
+        <DoubleAnimation 
+            Storyboard.TargetProperty="Opacity"
+            From="0.0" To="1.0" Duration="0:0:0.3"/>
+        <ThicknessAnimation 
+            Storyboard.TargetProperty="Margin"
+            From="0,20,0,0" To="0" Duration="0:0:0.3"/>
+    </Storyboard>
+</ResourceDictionary>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <!-- Quantum Control Styles -->
+    <Style x:Key="QuantumControlBase" TargetType="Control">
+        <Setter Property="Background" Value="#1E1E1E"/>
+        <Setter Property="Foreground" Value="#D4D4D4"/>
+        <Setter Property="BorderBrush" Value="#3E3E3E"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Padding" Value="10"/>
+    </Style>
+
+    <!-- Field Visualization Controls -->
+    <Style x:Key="FieldDisplay" TargetType="Canvas">
+        <Setter Property="Background" Value="#252526"/>
+        <Setter Property="ClipToBounds" Value="True"/>
+    </Style>
+
+    <!-- Particle System Controls -->
+    <Style x:Key="ParticleContainer" TargetType="ItemsControl">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <Canvas IsItemsHost="True"/>
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Status Monitor Controls -->
+    <Style x:Key="StatusDisplay" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="#D4D4D4"/>
+        <Setter Property="FontFamily" Value="Consolas"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Margin" Value="5"/>
+    </Style>
+
+    <!-- Quantum Button Style -->
+    <Style x:Key="QuantumButton" TargetType="Button">
+        <Setter Property="Background" Value="#2D2D2D"/>
+        <Setter Property="Foreground" Value="#D4D4D4"/>
+        <Setter Property="BorderBrush" Value="#3E3E3E"/>
+        <Setter Property="Padding" Value="15,8"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="1">
+                        <ContentPresenter HorizontalAlignment="Center" 
+                                        VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#3E3E3E"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="#4A1C40"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+	<Color x:Key="BackgroundColor">#1E1E1E</Color>
+	<Color x:Key="SecondaryBackgroundColor">#252526</Color>
+	<Color x:Key="BorderColor">#3E3E3E</Color>
+	<Color x:Key="TextColor">#D4D4D4</Color>
+	<Color x:Key="AccentColor">#8B0000</Color>
+
+	<!-- Button Styles -->
+	<Style TargetType="Button">
+		<Setter Property="Background" Value="#2D2D2D"/>
+		<Setter Property="Foreground" Value="#D4D4D4"/>
+		<Setter Property="BorderBrush" Value="#3E3E3E"/>
+		<Setter Property="Padding" Value="15,8"/>
+	</Style>
+
+	<!-- Panel Styles -->
+	<Style TargetType="Border" x:Key="PanelStyle">
+		<Setter Property="Background" Value="#252526"/>
+		<Setter Property="BorderBrush" Value="#3E3E3E"/>
+		<Setter Property="BorderThickness" Value="1"/>
+		<Setter Property="CornerRadius" Value="3"/>
+	</Style>
+</ResourceDictionary>
+<UserControl x:Class="Sebastian.Interface.Panels.DashboardPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="clr-namespace:Sebastian.Interface.Controls">
+    <Border Style="{StaticResource PanelStyle}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <controls:StatusMonitors Grid.Row="0"/>
+            <controls:VoicePatternVisualizer Grid.Row="1"/>
+        </Grid>
+    </Border>
+</UserControl>
+<UserControl x:Class="Sebastian.Interface.Panels.InteractionPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Border Style="{StaticResource PanelStyle}">
+        <StackPanel>
+            <TextBox Background="#2D2D2D" Foreground="#D4D4D4"/>
+            <Button Content="Send" Margin="0,5,0,0"/>
+        </StackPanel>
+    </Border>
+</UserControl>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Color x:Key="BackgroundColor">#1E1E1E</Color>
+    <Color x:Key="SecondaryBackgroundColor">#252526</Color>
+    <Color x:Key="BorderColor">#3E3E3E</Color>
+    <Color x:Key="TextColor">#D4D4D4</Color>
+    <Color x:Key="AccentColor">#8B0000</Color>
+
+    <Style TargetType="Button">
+        <Setter Property="Background" Value="#2D2D2D"/>
+        <Setter Property="Foreground" Value="#D4D4D4"/>
+        <Setter Property="BorderBrush" Value="#3E3E3E"/>
+        <Setter Property="Padding" Value="15,8"/>
+    </Style>
+
+    <Style TargetType="Border" x:Key="PanelStyle">
+        <Setter Property="Background" Value="#252526"/>
+        <Setter Property="BorderBrush" Value="#3E3E3E"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="3"/>
+    </Style>
+</ResourceDictionary>

@@ -1,0 +1,6 @@
+import REALITY_COHERENCE
+import FIELD_STRENGTH
+import NJ
+import PHI
+MATRIX_DIM = 64
+TENSOR_DIM = 31

@@ -1,0 +1,216 @@
+
+-------------------------------------------------------------------------------
+   ROBOCOPY     ::     Robust File Copy for Windows                              
+-------------------------------------------------------------------------------
+
+  Started : Thursday, January 30, 2025 9:58:47 PM
+   Source : R:\sebastian\
+     Dest : R:\sebastian\Unified\
+
+    Files : *.*
+	    
+ Exc Dirs : Unified
+	    
+  Options : *.* /S /E /DCOPY:DA /COPY:DAT /PURGE /MIR /R:1000000 /W:30 
+
+------------------------------------------------------------------------------
+
+	                  23	R:\sebastian\
+	    Newer     		   14371	consolidation.log100%  
+	                   0	R:\sebastian\AdaptiveLearning\
+	                   3	R:\sebastian\AdaptiveLearning\continuous_learning\
+	                   5	R:\sebastian\AdaptiveLearning\core\
+	                   2	R:\sebastian\AdaptiveLearning\human_AI_collaboration\
+	                   2	R:\sebastian\AdaptiveLearning\self_optimization\
+	                   2	R:\sebastian\BehavioralSystems\
+	                   2	R:\sebastian\BehavioralSystems\cloud_integration\
+	                   4	R:\sebastian\BehavioralSystems\modular_architecture\
+	                   2	R:\sebastian\BehavioralSystems\user_personalization\
+	                  22	R:\sebastian\Core\
+	                   0	R:\sebastian\Core\Analysis\
+	                   0	R:\sebastian\Core\AR_integration\
+	                   4	R:\sebastian\Core\Combat\
+	                   5	R:\sebastian\Core\deep_reinforcement_learning\
+	                   1	R:\sebastian\Core\error_correction\
+	                  11	R:\sebastian\Core\Integration\
+	                   0	R:\sebastian\Core\IoT_devices\
+	                   2	R:\sebastian\Core\multimodal_learning\
+	                   1	R:\sebastian\Core\Processing\
+	                   4	R:\sebastian\Core\Protection\
+	                  27	R:\sebastian\Core\Quantum\
+	                   2	R:\sebastian\Core\quantum_algorithms\
+	                   3	R:\sebastian\Core\quantum_processors\
+	                  13	R:\sebastian\Core\Reality\
+	                   5	R:\sebastian\Core\Service\
+	                   0	R:\sebastian\Core\smart_sensors\
+	                   0	R:\sebastian\Core\System\
+	                   6	R:\sebastian\Core\transfer_learning\
+	                  11	R:\sebastian\Core\validation\
+	                   5	R:\sebastian\Core\validation\analysis\
+	                   5	R:\sebastian\Core\validation\integration\
+	                   5	R:\sebastian\Core\validation\monitoring\
+	                   5	R:\sebastian\Core\validation\optimization\
+	                   5	R:\sebastian\Core\validation\reporting\
+	                  18	R:\sebastian\Core\Visualization\
+	                   0	R:\sebastian\Core\Voice\
+	                   1	R:\sebastian\Core\__pycache__\
+	                   0	R:\sebastian\CustomizationScalability\
+	                   2	R:\sebastian\CustomizationScalability\cloud_integration\
+	                   4	R:\sebastian\CustomizationScalability\modular_architecture\
+	                   2	R:\sebastian\CustomizationScalability\user_personalization\
+	                  12	R:\sebastian\IntelligenceSystems\
+	                   0	R:\sebastian\IntelligenceSystems\adaptive_learning\
+	                   2	R:\sebastian\IntelligenceSystems\adaptive_learning\data_optimization\
+	                   5	R:\sebastian\IntelligenceSystems\adaptive_learning\quantum_enhancement\
+	                   5	R:\sebastian\IntelligenceSystems\adaptive_learning\reality_sync\
+	                   2	R:\sebastian\IntelligenceSystems\ai\
+	                   2	R:\sebastian\IntelligenceSystems\brain\
+	                   2	R:\sebastian\IntelligenceSystems\butler\
+	                   7	R:\sebastian\IntelligenceSystems\core\
+	                   2	R:\sebastian\IntelligenceSystems\data_collection\
+	                   4	R:\sebastian\IntelligenceSystems\implementation\
+	                   9	R:\sebastian\IntelligenceSystems\Learning\
+	                   2	R:\sebastian\IntelligenceSystems\persona\
+	                   0	R:\sebastian\IntelligenceSystems\persona\core_traits\
+	                   2	R:\sebastian\IntelligenceSystems\persona\core_traits\demonic\
+	                   2	R:\sebastian\IntelligenceSystems\persona\core_traits\efficiency\
+	                   2	R:\sebastian\IntelligenceSystems\persona\core_traits\elegance\
+	                   2	R:\sebastian\IntelligenceSystems\persona\core_traits\loyalty\
+	                   0	R:\sebastian\IntelligenceSystems\persona\database\
+	                   2	R:\sebastian\IntelligenceSystems\persona\database\anime_data\
+	                   2	R:\sebastian\IntelligenceSystems\persona\database\manga_data\
+	                   5	R:\sebastian\IntelligenceSystems\persona\database\personality_data\
+	                   2	R:\sebastian\IntelligenceSystems\persona\database\processed_data\
+	                   0	R:\sebastian\IntelligenceSystems\persona\interaction_design\
+	                   2	R:\sebastian\IntelligenceSystems\persona\interaction_design\behavioral_matrix\
+	                   2	R:\sebastian\IntelligenceSystems\persona\interaction_design\dialogue_systems\
+	                   2	R:\sebastian\IntelligenceSystems\persona\interaction_design\user_adaptation\
+	                   3	R:\sebastian\IntelligenceSystems\persona\quantum_core\
+	                   0	R:\sebastian\IntelligenceSystems\persona\strategic_core\
+	                   2	R:\sebastian\IntelligenceSystems\persona\strategic_core\combat_systems\
+	                   2	R:\sebastian\IntelligenceSystems\persona\strategic_core\decision_engine\
+	                   2	R:\sebastian\IntelligenceSystems\persona\strategic_core\service_protocols\
+	                   0	R:\sebastian\IntelligenceSystems\persona\training\
+	                   2	R:\sebastian\IntelligenceSystems\persona\training\data_collection\
+	                   2	R:\sebastian\IntelligenceSystems\persona\training\model_training\
+	                   2	R:\sebastian\IntelligenceSystems\persona\training\validation\
+	                   8	R:\sebastian\IntelligenceSystems\Personality\
+	                   0	R:\sebastian\IntelligenceSystems\quantum\
+	                  14	R:\sebastian\IntelligenceSystems\quantum\core_operations\
+	                   1	R:\sebastian\IntelligenceSystems\quantum\neural\
+	                   1	R:\sebastian\IntelligenceSystems\quantum\voice_synthesis\
+	                   6	R:\sebastian\IntelligenceSystems\security\
+	                   0	R:\sebastian\IntelligenceSystems\strategic_core\
+	                   2	R:\sebastian\IntelligenceSystems\strategic_core\combat_systems\
+	                   2	R:\sebastian\IntelligenceSystems\strategic_core\decision_engine\
+	                   5	R:\sebastian\IntelligenceSystems\strategic_core\quantum_enhancement\
+	                   2	R:\sebastian\IntelligenceSystems\strategic_core\reality_manipulation\
+	                   2	R:\sebastian\IntelligenceSystems\strategic_core\service_protocols\
+	                   5	R:\sebastian\IntelligenceSystems\synthesis\
+	                   2	R:\sebastian\IntelligenceSystems\text_chat\
+	                   2	R:\sebastian\IntelligenceSystems\training\
+	                   9	R:\sebastian\IntelligenceSystems\voice\
+	                   3	R:\sebastian\IntelligenceSystems\voice_chat\
+	                   7	R:\sebastian\Interface\
+	                   2	R:\sebastian\Interface\animation\
+	                  16	R:\sebastian\Interface\console\
+	                   3	R:\sebastian\Interface\Controllers\
+	                  45	R:\sebastian\Interface\Controls\
+	                   5	R:\sebastian\Interface\Effects\
+	                  22	R:\sebastian\Interface\gui\
+	                   0	R:\sebastian\Interface\gui\bin\
+	                   0	R:\sebastian\Interface\gui\bin\Debug\
+	                   0	R:\sebastian\Interface\gui\bin\Debug\net9.0-windows\
+	                   0	R:\sebastian\Interface\gui\bin\Release\
+	                   0	R:\sebastian\Interface\gui\bin\Release\net9.0-windows\
+	                   0	R:\sebastian\Interface\gui\Controllers\
+	                   4	R:\sebastian\Interface\gui\Controllers\Core\
+	                   5	R:\sebastian\Interface\gui\Controllers\Panel\
+	                  10	R:\sebastian\Interface\gui\Controllers\Panels\
+	                  20	R:\sebastian\Interface\gui\Controllers\Specialized\
+	                   7	R:\sebastian\Interface\gui\Controllers\System\
+	                   1	R:\sebastian\Interface\gui\Controllers\Voice\
+	                  10	R:\sebastian\Interface\gui\Core\
+	                   1	R:\sebastian\Interface\gui\Gui\
+	                  29	R:\sebastian\Interface\gui\obj\
+	                   0	R:\sebastian\Interface\gui\obj\Debug\
+	                  95	R:\sebastian\Interface\gui\obj\Debug\net9.0-windows\
+	                  48	R:\sebastian\Interface\gui\obj\Debug\net9.0-windows\Panels\
+	                   0	R:\sebastian\Interface\gui\obj\Debug\net9.0-windows\ref\
+	                   0	R:\sebastian\Interface\gui\obj\Debug\net9.0-windows\refint\
+	                   5	R:\sebastian\Interface\gui\obj\Debug\net9.0-windows\Sebastian\
+	                   1	R:\sebastian\Interface\gui\obj\Debug\net9.0-windows\Styles\
+	                   0	R:\sebastian\Interface\gui\obj\Release\
+	                  39	R:\sebastian\Interface\gui\obj\Release\net9.0-windows\
+	                  32	R:\sebastian\Interface\gui\obj\Release\net9.0-windows\Panels\
+	                   0	R:\sebastian\Interface\gui\obj\Release\net9.0-windows\ref\
+	                   0	R:\sebastian\Interface\gui\obj\Release\net9.0-windows\refint\
+	                   3	R:\sebastian\Interface\gui\obj\Release\net9.0-windows\Sebastian\
+	                   1	R:\sebastian\Interface\gui\obj\Release\net9.0-windows\Styles\
+	                  48	R:\sebastian\Interface\gui\Panels\
+	                  18	R:\sebastian\Interface\gui\Sebastian\
+	                   0	R:\sebastian\Interface\gui\Sebastian\.vs\
+	                   3	R:\sebastian\Interface\gui\Sebastian\.vs\ProjectEvaluation\
+	                   0	R:\sebastian\Interface\gui\Sebastian\.vs\Sebastian\
+	                   1	R:\sebastian\Interface\gui\Sebastian\.vs\Sebastian\DesignTimeBuild\
+	                   8	R:\sebastian\Interface\gui\Sebastian\.vs\Sebastian\FileContentIndex\
+	                   4	R:\sebastian\Interface\gui\Sebastian\.vs\Sebastian\v17\
+	                   1	R:\sebastian\Interface\gui\Sebastian\Animation\
+	                   0	R:\sebastian\Interface\gui\Sebastian\bin\
+	                   0	R:\sebastian\Interface\gui\Sebastian\bin\Debug\
+	                   0	R:\sebastian\Interface\gui\Sebastian\bin\Debug\net6.0-windows\
+	                   0	R:\sebastian\Interface\gui\Sebastian\bin\Release\
+	                   0	R:\sebastian\Interface\gui\Sebastian\bin\Release\net6.0-windows\
+	                   1	R:\sebastian\Interface\gui\Sebastian\Controllers\
+	                  74	R:\sebastian\Interface\gui\Sebastian\Core\
+	                   2	R:\sebastian\Interface\gui\Sebastian\Effects\
+	                   3	R:\sebastian\Interface\gui\Sebastian\Integration\
+	                  20	R:\sebastian\Interface\gui\Sebastian\obj\
+	                   0	R:\sebastian\Interface\gui\Sebastian\obj\Debug\
+	                  46	R:\sebastian\Interface\gui\Sebastian\obj\Debug\net6.0-windows\
+	                   0	R:\sebastian\Interface\gui\Sebastian\obj\Debug\net6.0-windows\ref\
+	                   0	R:\sebastian\Interface\gui\Sebastian\obj\Debug\net6.0-windows\refint\
+	                   0	R:\sebastian\Interface\gui\Sebastian\obj\Release\
+	                  10	R:\sebastian\Interface\gui\Sebastian\obj\Release\net6.0-windows\
+	                   0	R:\sebastian\Interface\gui\Sebastian\obj\Release\net6.0-windows\ref\
+	                   0	R:\sebastian\Interface\gui\Sebastian\obj\Release\net6.0-windows\refint\
+	                   3	R:\sebastian\Interface\gui\Styles\
+	                  18	R:\sebastian\Interface\Panels\
+	                   6	R:\sebastian\Interface\Styles\
+	                   1	R:\sebastian\Interface\text_chat\
+	                   1	R:\sebastian\Interface\voice_chat\
+	                   2	R:\sebastian\NaturalLanguageProcessing\
+	                   2	R:\sebastian\NaturalLanguageProcessing\text_chat\
+	                   3	R:\sebastian\NaturalLanguageProcessing\voice_chat\
+	                   2	R:\sebastian\NeuralNetworks\
+	                   5	R:\sebastian\NeuralNetworks\deep_reinforcement_learning\
+	                   2	R:\sebastian\NeuralNetworks\multimodal_learning\
+	                   7	R:\sebastian\NeuralNetworks\transfer_learning\
+	                   7	R:\sebastian\PowerManagement\
+	                   2	R:\sebastian\SensorIntegration\
+	                   0	R:\sebastian\SensorIntegration\AR_integration\
+	                   0	R:\sebastian\SensorIntegration\IoT_devices\
+	                   0	R:\sebastian\SensorIntegration\smart_sensors\
+	                   1	R:\sebastian\tests\
+	                   3	R:\sebastian\tools\
+	    Newer     		       0	consolidation.log100%  
+	                   2	R:\sebastian\UserInteraction\
+	                   1	R:\sebastian\UserInteraction\text_chat\
+	                   1	R:\sebastian\UserInteraction\voice_chat\
+	                   2	R:\sebastian\VoiceCloning\
+	                   8	R:\sebastian\VoiceCloning\core\
+	                   2	R:\sebastian\VoiceCloning\data_collection\
+	                   4	R:\sebastian\VoiceCloning\implementation\
+	                   7	R:\sebastian\VoiceCloning\synthesis\
+	                   2	R:\sebastian\VoiceCloning\training\
+	                   0	R:\sebastian\VoiceCloning\validation\
+
+------------------------------------------------------------------------------
+
+               Total    Copied   Skipped  Mismatch    FAILED    Extras
+    Dirs :       189         0       189         0         0         0
+   Files :      1116         2      1114         0         0         0
+   Bytes :    2.05 m    14.0 k    2.03 m         0         0         0
+   Times :   0:00:00   0:00:00                       0:00:00   0:00:00
+   Ended : Thursday, January 30, 2025 9:58:47 PM
+

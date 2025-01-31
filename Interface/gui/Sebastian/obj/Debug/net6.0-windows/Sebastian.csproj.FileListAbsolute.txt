@@ -1,0 +1,11 @@
+R:\sebastian\Interface\gui\Sebastian\obj\Debug\net6.0-windows\MainWindow.g.cs
+R:\sebastian\Interface\gui\Sebastian\obj\Debug\net6.0-windows\App.g.cs
+R:\sebastian\Interface\gui\Sebastian\obj\Debug\net6.0-windows\Sebastian_MarkupCompile.cache
+R:\sebastian\Interface\gui\Sebastian\obj\Debug\net6.0-windows\Sebastian_MarkupCompile.lref
+R:\sebastian\Interface\gui\Sebastian\obj\Debug\net6.0-windows\MainWindow.baml
+R:\sebastian\Interface\gui\Sebastian\obj\Debug\net6.0-windows\Sebastian.g.resources
+R:\sebastian\Interface\gui\Sebastian\obj\Debug\net6.0-windows\Sebastian.GeneratedMSBuildEditorConfig.editorconfig
+R:\sebastian\Interface\gui\Sebastian\obj\Debug\net6.0-windows\Sebastian.AssemblyInfoInputs.cache
+R:\sebastian\Interface\gui\Sebastian\obj\Debug\net6.0-windows\Sebastian.AssemblyInfo.cs
+R:\sebastian\Interface\gui\Sebastian\obj\Debug\net6.0-windows\Sebastian.csproj.CoreCompileInputs.cache
+R:\sebastian\Interface\gui\Sebastian\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs

@@ -1,0 +1,40 @@
+<UserControl x:Class="Sebastian.Panels.VoicePatternVisualizer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Background="{StaticResource BackgroundColor}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Visualization Area -->
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Waveform Display -->
+            <Canvas x:Name="WaveformCanvas" 
+                    Grid.Row="0"
+                    Style="{StaticResource FieldDisplay}"/>
+
+            <!-- Resonance Display -->
+            <Canvas x:Name="ResonanceDisplay"
+                    Grid.Row="1"
+                    Style="{StaticResource FieldDisplay}"/>
+        </Grid>
+
+        <!-- Controls -->
+        <StackPanel Grid.Row="1" 
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    Margin="20">
+            <Button Content="Analyze" 
+                    Style="{StaticResource QuantumButton}"
+                    Margin="0,0,10,0"/>
+            <Button Content="Synchronize"
+                    Style="{StaticResource QuantumButton}"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

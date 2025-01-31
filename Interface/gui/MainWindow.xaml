@@ -1,0 +1,59 @@
+﻿<Window x:Class="gui.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Sebastian Interface" Height="900" Width="1600"
+        Background="{StaticResource BackgroundColor}">
+
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="80"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="60"/>
+		</Grid.RowDefinitions>
+
+		<!-- Upper Section with Profile -->
+		<Border Grid.Row="0" Style="{StaticResource PanelStyle}">
+			<DockPanel>
+				<Image Source="/Assets/sebastian-profile.png" Width="60" Height="60" Margin="10"/>
+				<StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+					<Button Content="Home" Style="{StaticResource NavButton}" />
+					<Button Content="Control Center" Style="{StaticResource NavButton}" />
+					<Button Content="Financial Suite" Style="{StaticResource NavButton}" />
+					<Button Content="Health" Style="{StaticResource NavButton}" />
+					<Button Content="Security" Style="{StaticResource NavButton}" />
+					<Button Content="Smart Helper" Style="{StaticResource NavButton}" />
+					<Button Content="Social" Style="{StaticResource NavButton}" />
+					<Button Content="Advanced" Style="{StaticResource NavButton}" />
+					<Button Content="Voice" Style="{StaticResource NavButton}" />
+				</StackPanel>
+			</DockPanel>
+		</Border>
+
+		<!-- Main Content Area -->
+		<Grid Grid.Row="1">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="250"/>
+				<ColumnDefinition Width="*"/>
+			</Grid.ColumnDefinitions>
+
+			<!-- Left Sidebar -->
+			<Border Grid.Column="0" Style="{StaticResource PanelStyle}" Margin="5">
+				<StackPanel x:Name="SidebarPanel"/>
+			</Border>
+
+			<!-- Main Panel -->
+			<Border Grid.Column="1" Style="{StaticResource PanelStyle}" Margin="5">
+				<Grid x:Name="MainPanel"/>
+			</Border>
+		</Grid>
+
+		<!-- Lower Section -->
+		<Border Grid.Row="2" Style="{StaticResource PanelStyle}">
+			<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+				<Button Content="Quick Access" Style="{StaticResource ActionButton}" />
+				<Button Content="System Status" Style="{StaticResource ActionButton}" />
+				<Button Content="Power Control" Style="{StaticResource ActionButton}" />
+			</StackPanel>
+		</Border>
+	</Grid>
+</Window>

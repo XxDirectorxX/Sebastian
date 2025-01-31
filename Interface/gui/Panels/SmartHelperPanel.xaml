@@ -1,0 +1,20 @@
+<UserControl x:Class="Sebastian.Panels.SmartHelperPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Border Style="{StaticResource PanelStyle}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <ScrollViewer>
+                <ItemsControl x:Name="ConversationDisplay"/>
+            </ScrollViewer>
+
+            <TextBox Grid.Row="1" 
+                     x:Name="InputBox"
+                     Style="{StaticResource QuantumTextBox}"/>
+        </Grid>
+    </Border>
+</UserControl>

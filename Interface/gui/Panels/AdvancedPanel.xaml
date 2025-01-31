@@ -1,0 +1,20 @@
+<UserControl x:Class="Sebastian.Panels.AdvancedPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Border Style="{StaticResource PanelStyle}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Reality Manipulation" Style="{StaticResource QuantumButton}"/>
+                <Button Content="Time Control" Style="{StaticResource QuantumButton}"/>
+                <Button Content="Energy Projection" Style="{StaticResource QuantumButton}"/>
+            </StackPanel>
+
+            <Canvas x:Name="QuantumVisualizer" Grid.Row="1"/>
+        </Grid>
+    </Border>
+</UserControl>

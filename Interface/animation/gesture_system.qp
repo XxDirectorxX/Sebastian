@@ -1,0 +1,5 @@
+class GestureController:
+    execute_greeting:
+        bow_animation = create_elegant_bow()
+        seal_glow = activate_contract_seal()
+        return synchronize_movements(bow_animation, seal_glow)

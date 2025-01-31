@@ -1,0 +1,41 @@
+<UserControl x:Class="SebastianInterface.DemonicEnergyVisualizer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <Grid>
+        <!-- Demonic Energy Flow -->
+        <Canvas>
+            <!-- Energy Streams -->
+            <ItemsControl ItemsSource="{Binding EnergyStreams}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Path Stroke="#8B0000" 
+                              StrokeThickness="1.5"
+                              Data="{Binding StreamPath}">
+                            <Path.Effect>
+                                <BlurEffect Radius="3"/>
+                            </Path.Effect>
+                        </Path>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <!-- Contract Seal Power Nodes -->
+            <ItemsControl ItemsSource="{Binding PowerNodes}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Ellipse Width="10" Height="10"
+                                    Fill="#BF9B30">
+                                <Ellipse.Effect>
+                                    <DropShadowEffect Color="#4A1C40" 
+                                                    BlurRadius="5"/>
+                                </Ellipse.Effect>
+                            </Ellipse>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Canvas>
+    </Grid>
+</UserControl>

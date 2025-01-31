@@ -1,0 +1,47 @@
+<UserControl x:Class="gui.Panels.DemonicPowersPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="#1E1E1E">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <!-- Power Status -->
+        <Border Background="#252526" Padding="20">
+            <StackPanel>
+                <TextBlock Text="Demonic Powers" Foreground="#D4D4D4" FontSize="24"/>
+                <!-- Power indicators -->
+            </StackPanel>
+        </Border>
+        
+        <!-- Powers Grid -->
+        <UniformGrid Grid.Row="1" Columns="2" Rows="2" Margin="20">
+            <Border Background="#252526" Margin="5">
+                <StackPanel>
+                    <TextBlock Text="Contract Seal" Foreground="#D4D4D4"/>
+                    <!-- Seal controls -->
+                </StackPanel>
+            </Border>
+            <Border Background="#252526" Margin="5">
+                <StackPanel>
+                    <TextBlock Text="Reality Warping" Foreground="#D4D4D4"/>
+                    <!-- Reality controls -->
+                </StackPanel>
+            </Border>
+            <Border Background="#252526" Margin="5">
+                <StackPanel>
+                    <TextBlock Text="Power Manifestation" Foreground="#D4D4D4"/>
+                    <!-- Power controls -->
+                </StackPanel>
+            </Border>
+            <Border Background="#252526" Margin="5">
+                <StackPanel>
+                    <TextBlock Text="Demonic Essence" Foreground="#D4D4D4"/>
+                    <!-- Essence controls -->
+                </StackPanel>
+            </Border>
+        </UniformGrid>
+    </Grid>
+</UserControl>

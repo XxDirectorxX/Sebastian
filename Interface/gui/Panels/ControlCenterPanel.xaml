@@ -1,0 +1,27 @@
+<UserControl x:Class="Sebastian.Panels.ControlCenterPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Border Style="{StaticResource PanelStyle}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Width="60" 
+                        Background="{StaticResource SecondaryBackgroundColor}">
+                <Button Style="{StaticResource QuantumButton}"
+                        Content="🏠" x:Name="HomeButton"/>
+                <Button Style="{StaticResource QuantumButton}"
+                        Content="💡" x:Name="LightsButton"/>
+                <Button Style="{StaticResource QuantumButton}"
+                        Content="🌡️" x:Name="TempButton"/>
+                <Button Style="{StaticResource QuantumButton}"
+                        Content="🔒" x:Name="SecurityButton"/>
+            </StackPanel>
+
+            <ContentControl Grid.Column="1" 
+                          x:Name="ControlContent"/>
+        </Grid>
+    </Border>
+</UserControl>

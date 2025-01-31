@@ -1,0 +1,57 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "R:\\sebastian\\Interface\\gui\\Sebastian\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C85392E0-D171-4D2B-B182-C13C3FABFF15}|Sebastian.csproj|r:\\sebastian\\interface\\gui\\sebastian\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{C85392E0-D171-4D2B-B182-C13C3FABFF15}|Sebastian.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C85392E0-D171-4D2B-B182-C13C3FABFF15}|Sebastian.csproj|r:\\sebastian\\interface\\gui\\sebastian\\quantumfieldvisualizer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C85392E0-D171-4D2B-B182-C13C3FABFF15}|Sebastian.csproj|solutionrelative:quantumfieldvisualizer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{f677620d-05fd-48ed-8423-72a12db4deef}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "QuantumFieldVisualizer.cs",
+              "DocumentMoniker": "R:\\sebastian\\Interface\\gui\\Sebastian\\QuantumFieldVisualizer.cs",
+              "RelativeDocumentMoniker": "QuantumFieldVisualizer.cs",
+              "ToolTip": "R:\\sebastian\\Interface\\gui\\Sebastian\\QuantumFieldVisualizer.cs",
+              "RelativeToolTip": "QuantumFieldVisualizer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-29T01:57:32.723Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "R:\\sebastian\\Interface\\gui\\Sebastian\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "MainWindow.xaml",
+              "ToolTip": "R:\\sebastian\\Interface\\gui\\Sebastian\\MainWindow.xaml",
+              "RelativeToolTip": "MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-01-26T23:30:55.543Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

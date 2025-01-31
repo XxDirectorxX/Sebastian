@@ -1,0 +1,27 @@
+<UserControl x:Class="SebastianInterface.VoicePatternVisualizer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <Grid>
+        <!-- Voice Waveform Display -->
+        <Canvas x:Name="WaveformCanvas">
+            <Polyline Stroke="#4A1C40" StrokeThickness="2"
+                      Points="{Binding WaveformPoints}">
+                <Polyline.Effect>
+                    <BlurEffect Radius="1"/>
+                </Polyline.Effect>
+            </Polyline>
+        </Canvas>
+
+        <!-- Contract Seal Resonance -->
+        <Canvas x:Name="ResonanceDisplay">
+            <Path Data="{Binding ContractSealPath}"
+                  Stroke="#BF9B30" StrokeThickness="1">
+                <Path.Effect>
+                    <DropShadowEffect Color="#8B0000" 
+                                    BlurRadius="15"/>
+                </Path.Effect>
+            </Path>
+        </Canvas>
+    </Grid>
+</UserControl>

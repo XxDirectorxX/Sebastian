@@ -1,0 +1,36 @@
+<UserControl x:Class="SebastianInterface.SystemControls"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <Grid>
+        <!-- Holographic Control Panel -->
+        <Border Background="#0A0A0F" Opacity="0.9">
+            <!-- Command Interface -->
+            <StackPanel>
+                <!-- Voice Control Status -->
+                <Border BorderBrush="#BF9B30" BorderThickness="1">
+                    <TextBlock Text="{Binding VoiceStatus}"
+                             Foreground="#C0C2C9"
+                             FontFamily="Cinzel"/>
+                </Border>
+
+                <!-- System Commands -->
+                <ItemsControl ItemsSource="{Binding CommandButtons}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Button Content="{Binding CommandName}"
+                                    Background="#4A1C40"
+                                    Foreground="#C0C2C9"
+                                    BorderBrush="#8B0000">
+                                <Button.Effect>
+                                    <DropShadowEffect Color="#BF9B30" 
+                                                    BlurRadius="5"/>
+                                </Button.Effect>
+                            </Button>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>
