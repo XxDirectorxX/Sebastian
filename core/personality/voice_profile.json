@@ -1,0 +1,19 @@
+{
+  "provider": "amazon_polly",
+  "voice_id": "Brian",
+  "language_code": "en-GB",
+  "style": "formal",
+  "prosody": {
+    "rate": "medium",
+    "pitch": "medium",
+    "volume": "medium"
+  },
+  "fallback_voices": [
+    {
+      "provider": "amazon_polly",
+      "voice_id": "Matthew",
+      "language_code": "en-US"
+    }
+  ],
+  "description": "A dignified, British-accented male voice with formal tone and calm delivery. Placeholder for future J. Michael Tatum-style clone."
+}

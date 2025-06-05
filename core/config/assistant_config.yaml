@@ -1,0 +1,128 @@
+system:
+  name: Sebastian # Was 'assistant_name' at top level
+  version: "0.1.0" # Added for consistency with default
+  mode: interactive # Was top-level
+  logging_level: INFO # Was under 'security' and 'logging' sections separately
+
+intelligence:
+  nlp_engine:
+    provider: spacy
+    spacy_model_name: en_core_web_sm
+    intents:
+      greet: ["hello", "hi", "greetings", "hey", "good morning", "good afternoon", "good evening"]
+      get_time: ["time", "what time is it", "current time"]
+      get_weather: ["weather", "forecast", "what's the weather like"]
+      exit: ["exit", "quit", "goodbye", "bye", "shutdown"]
+      set_user_name: ["call me", "my name is"]
+      create_memory: ["remember that", "make a note", "don't forget"]
+      recall_memories: ["what do you remember", "recall my information", "tell me what you know"]
+      control_device: ["turn on", "turn off", "activate", "deactivate", "set"]
+      shutdown_system: ["shutdown system", "power down", "initiate full shutdown"]
+
+memory:
+  short_term:
+    provider: "in_memory"
+    max_history_per_session: 100 # Was 'short_term_capacity'
+  long_term:
+    provider: "sqlite" # Was 'long_term_storage'
+    sqlite_db_path: "sebastian_memory.db"
+  # embeddings_model and redis_url from your file can be here if needed by your memory manager
+  embeddings_model: sentence-transformers/all-mpnet-base-v2
+  redis_url: redis://localhost:6379/0
+
+voice:
+  # enabled: true # This can be inferred if wake_word_engine is set
+  # wake_word: sebastian # This is part of porcupine config (keyword_paths)
+  # voice_model: assets/voice_models/sebastian_voice_model.pth # This would be part of custom TTS if used
+  # sample_rate: 16000 # This is now under voice_interface
+  # continuous_listening: true # This is managed by VoiceInterface logic
+  # tts_voice: en_sebastian # This would be a speaker_idx or similar for Coqui
+  # emotion_shaping: true # This is a more advanced feature for later
+
+  wake_word_engine: "porcupine"
+  porcupine:
+    access_key: "YOUR_PICOVOICE_ACCESS_KEY" # Replace with your actual key
+    keyword_paths:
+      - "assets/wakewords/sebastian_windows.ppn"
+    sensitivity: 0.7
+    library_path: null
+    model_path: null
+  
+  stt_engine: "whisper" # Corrected indentation
+  whisper: # Corrected indentation
+    model_size: "base"
+    language: "en"
+    device: null
+  
+  tts_engine: "coqui_tts" # Corrected indentation and only one instance
+  coqui_tts: # Corrected indentation
+    model_name: "tts_models/en/ljspeech/tacotron2-DDC"
+    vocoder_name: null
+    device: null
+    # speaker_idx: null # For multi-speaker models like your 'en_sebastian'
+    # language_idx: null
+
+  voice_interface: # Moved inside 'voice'
+    input_device_index: null
+    output_device_index: null
+    sample_rate: 16000
+    channels: 1
+    command_recording_duration_seconds: 5.0
+    ack_sound_path: "assets/sounds/ack.wav"
+    error_sound_path: "assets/sounds/error.wav"
+    # vad_threshold_db: -40 
+    # vad_silence_duration_seconds: 1.5
+
+# The following sections from your original file need to be mapped or decided if they fit the new structure
+# access_control: # This might go under a 'security' section or be handled differently
+# vision:
+# security:
+# personality:
+# api:
+# logging: # System logging level is now under 'system', specific logging config might be separate
+# paths:
+
+# Example of how these might be structured, similar to ConfigLoader's default thinking:
+# (You'll need to adjust SebastianSystem and other parts to read from these locations if you use them)
+
+# security: # Consolidating security related items
+#   access_control_method: "pass_through" # was access_control.method
+#   encryption_enabled: true # was security.encryption
+#   authorized_users: # was access_control.authorized_users
+#     master:
+#       permissions: ['*', 'shutdown', 'access_memory']
+#     guest:
+#       permissions: ['query_weather', 'play_music']
+#   allowed_external_users: # was security.allowed_users
+#     - Ciel Phantomhive
+#     - Elizabeth Midford
+
+# vision: # If you implement vision features
+#   enabled: true
+#   face_recognition: true
+#   object_detection: false
+#   camera_index: 0
+
+# personality:
+#   base_formality: 8
+#   simulation_fidelity: "high"
+#   persona_file: "assets/personas/persona_profile.yaml"
+#   signature_phrases:
+#     - "Yes, My Lord."
+#     - "I am, after all, simply one hell of a butler."
+#     - "How may I be of service?"
+
+# api_service: # Renamed from 'api' to avoid conflict if there's a general 'api_keys' section
+#   host: "0.0.0.0"
+#   port: 8000
+#   enable_docs: true
+
+# file_paths: # Renamed from 'paths'
+#   assets_dir: "assets"
+#   logs_dir: "logs"
+#   core_config_dir: "core/config"
+#   # logging_config_file: "core/config/logging.yaml" # was logging.config_file
+
+# You would need to ensure your ConfigLoader's default creation logic and your system's config access
+# are consistent with the final structure you decide upon for these other sections.
+# For now, the critical 'system', 'intelligence', 'memory', and 'voice' sections are aligned.

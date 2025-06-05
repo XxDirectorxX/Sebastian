@@ -1,0 +1,37 @@
+version: 1
+disable_existing_loggers: False
+
+formatters:
+  standard:
+    format: "%(asctime)s | %(levelname)s | %(name)s | %(message)s"
+  detailed:
+    format: "%(asctime)s | %(levelname)s | %(name)s | %(process)d | %(thread)d | %(filename)s:%(lineno)d | %(message)s"
+  color:
+    format: "%(log_color)s%(asctime)s | %(levelname)s | %(name)s | %(message)s"
+    class: colorlog.ColoredFormatter
+
+handlers:
+  console:
+    class: logging.StreamHandler
+    level: INFO
+    formatter: color
+    stream: ext://sys.stdout
+  file:
+    class: logging.handlers.RotatingFileHandler
+    level: DEBUG
+    formatter: detailed
+    filename: logs/sebastian.log
+    maxBytes: 10485760  # 10MB
+    backupCount: 5
+    encoding: utf8
+
+loggers:
+  Sebastian:
+    level: DEBUG
+    handlers: [console, file]
+    propagate: no
+
+root:
+  level: INFO
+  handlers: [console, file]
+
