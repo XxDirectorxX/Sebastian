@@ -56,6 +56,7 @@ coverage.xml
 *.mo
 *.pot
 *.po
+model.safetensors
 
 # Django stuff:
 *.log
@@ -151,4 +152,4 @@ cython_debug/
 # assets/models/downloaded_large_model.bin
 # *.log
 # sebastian_memory.db # If you don't want to commit the SQLite DB
-# any_large_dataset_files/
+# any_large_dataset_files/"models/sentiment/model.safetensors" 
