@@ -2,7 +2,34 @@
 
 import importlib
 import logging
-from typing import Any, Dict, Callable, Optional
+from typing# core/task_dispatcher.py
+
+import asyncio
+import logging
+
+logger = logging.getLogger("Sebastian.TaskDispatcher")
+
+
+class PluginExecutionError(Exception):
+    pass
+
+
+async def execute_plugin_intent(module, intent: str, args: list, context: dict) -> str:
+    try:
+        if hasattr(module, "handle_intent"):
+            func = module.handle_intent
+            if asyncio.iscoroutinefunction(func):
+                return await func(intent, args, context)
+            else:
+                loop = asyncio.get_event_loop()
+                return await loop.run_in_executor(None, func, intent, args, context)
+        else:
+            raise PluginExecutionError("Plugin lacks 'handle_intent' function")
+
+    except Exception as e:
+        logger.exception(f"Failed to execute intent '{intent}' in plugin '{module.__name__}'")
+        raise PluginExecutionError(f"Execution failed for intent '{intent}': {e}")
+ import Any, Dict, Callable, Optional
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)

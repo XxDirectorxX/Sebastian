@@ -1,19 +1,17 @@
-# core/plugins/weather.py
 
-from core.plugin_utils import plugin_metadata
+# plugins/weather.py
 
-@plugin_metadata(name="weather", description="Provides weather updates", version="1.0")
-def run(params: dict, context: dict = None, tone: str = None) -> str:
-    location = params.get("location", "your current location")
+import logging
 
-    prefix = {
-        "curious": "Allow me to check the skies… ",
-        "serious": "Fetching data now. ",
-        "dramatic": "Shall I prepare the umbrella? "
-    }.get(tone, "")
+logger = logging.getLogger("Sebastian.Plugin.Weather")
 
-    # Simulate result
-    report = f"The weather in {location} is sunny with mild winds."
+SUPPORTED_INTENTS = ['get_weather', 'forecast']
 
-    return f"{prefix}{report}"
-
+async def handle(intent: dict) -> str:
+    try:
+        logger.info(f"[Weather] Handling intent: {intent}")
+        # Example logic
+        return "Today's forecast is temperate with minimal precipitation."
+    except Exception as e:
+        logger.exception(f"[Weather] Failed to process intent.")
+        return "My apologies, My Lord. That plugin encountered an error."

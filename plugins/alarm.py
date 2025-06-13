@@ -1,19 +1,17 @@
-# core/plugins/alarm.py
 
-from core.plugin_utils import plugin_metadata
+# plugins/alarm.py
 
-@plugin_metadata(name="alarm", description="Sets an alarm for a specified time", version="1.0")
-def run(params: dict, context: dict = None, tone: str = None) -> str:
-    context = context or {}
-    time = params.get("time")
+import logging
 
-    if not time:
-        return "I require a specific time to set the alarm, my lord."
+logger = logging.getLogger("Sebastian.Plugin.Alarm")
 
-    tone_suffix = {
-        "urgent": "I shall ensure you're alerted without fail.",
-        "casual": "Got it. No worries.",
-        "respectful": "As you wish."
-    }.get(tone, "Very well.")
+SUPPORTED_INTENTS = ['set_alarm', 'cancel_alarm']
 
-    return f"Alarm set for {time}. {tone_suffix}"
+async def handle(intent: dict) -> str:
+    try:
+        logger.info(f"[Alarm] Handling intent: {intent}")
+        # Example logic
+        return "Your alarm has been set, My Lord."
+    except Exception as e:
+        logger.exception(f"[Alarm] Failed to process intent.")
+        return "My apologies, My Lord. That plugin encountered an error."

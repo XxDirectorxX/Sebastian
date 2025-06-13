@@ -1,31 +1,17 @@
-# core/plugins/greet.py
 
-from core.plugin_utils import plugin_metadata
+# plugins/greet.py
 
-@plugin_metadata(name="greet", description="Delivers a personalized greeting", version="1.0")
-def run(params: dict, context: dict = None, tone: str = None) -> str:
-    context = context or {}
-    user = context.get("user", "my lord")
+import logging
 
-    tone_prefix = {
-        "cheerful": "A splendid day to you, ",
-        "formal": "Greetings, ",
-        "sarcastic": "Well, look who decided to show up — ",
-    }.get(tone, "Good day, ")
+logger = logging.getLogger("Sebastian.Plugin.Greet")
 
-    return f"{tone_prefix}{user}."
+SUPPORTED_INTENTS = ['greet_user']
 
-from core.plugins.plugin_manager import SebastianPlugin
-
-class GreetPlugin(SebastianPlugin):
-    def metadata(self):
-        return {
-            "name": "greet",
-            "version": "1.0",
-            "description": "Greets the user with a formal introduction.",
-            "author": "Sebastian"
-        }
-
-    def run(self, **kwargs):
-        title = kwargs.get("title", "My Lord")
-        return f"Good evening, {title}. As always, I am at your service."
+async def handle(intent: dict) -> str:
+    try:
+        logger.info(f"[Greet] Handling intent: {intent}")
+        # Example logic
+        return "Good day, My Lord. How may I serve?"
+    except Exception as e:
+        logger.exception(f"[Greet] Failed to process intent.")
+        return "My apologies, My Lord. That plugin encountered an error."

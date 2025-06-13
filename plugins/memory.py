@@ -1,24 +1,17 @@
-# core/plugins/memory.py
 
-from core.plugin_utils import plugin_metadata
+# plugins/memory.py
 
-@plugin_metadata(name="memory", description="Stores or retrieves information from memory", version="1.0")
-def run(params: dict, context: dict = None, tone: str = None) -> str:
-    context = context or {}
-    action = params.get("action")
-    key = params.get("key")
-    value = params.get("value")
+import logging
 
-    if action == "store" and key and value:
-        context.setdefault("memory", {})[key] = value
-        return f"Stored '{key}' as '{value}', my lord."
+logger = logging.getLogger("Sebastian.Plugin.Memory")
 
-    elif action == "retrieve" and key:
-        memory = context.get("memory", {})
-        result = memory.get(key)
-        if result:
-            return f"The value of '{key}' is '{result}', as requested."
-        else:
-            return f"I found nothing stored under '{key}', my lord."
+SUPPORTED_INTENTS = ['store_memory', 'recall_memory']
 
-    return "Specify whether to store or retrieve, along with a key."
+async def handle(intent: dict) -> str:
+    try:
+        logger.info(f"[Memory] Handling intent: {intent}")
+        # Example logic
+        return "The memory has been recorded, My Lord."
+    except Exception as e:
+        logger.exception(f"[Memory] Failed to process intent.")
+        return "My apologies, My Lord. That plugin encountered an error."

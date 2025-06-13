@@ -1,17 +1,17 @@
-# core/plugins/music.py
 
-from core.plugin_utils import plugin_metadata
+# plugins/music.py
 
-@plugin_metadata(name="music", description="Controls music playback", version="1.0")
-def run(params: dict, context: dict = None, tone: str = None) -> str:
-    action = params.get("action", "play")
-    song = params.get("song", "your preferred track")
+import logging
 
-    prelude = {
-        "romantic": "Allow me to set the mood… ",
-        "casual": "Let's vibe. ",
-        "direct": ""
-    }.get(tone, "")
+logger = logging.getLogger("Sebastian.Plugin.Music")
 
-    return f"{prelude}Now {action}ing {song}."
+SUPPORTED_INTENTS = ['play_music', 'stop_music']
 
+async def handle(intent: dict) -> str:
+    try:
+        logger.info(f"[Music] Handling intent: {intent}")
+        # Example logic
+        return "Commencing playback. Shall I fetch your preferred symphony?"
+    except Exception as e:
+        logger.exception(f"[Music] Failed to process intent.")
+        return "My apologies, My Lord. That plugin encountered an error."

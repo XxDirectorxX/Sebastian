@@ -1,3 +1,5 @@
+# core/plugin_manager.py
+
 from datetime import datetime, timedelta, timezone
 import json
 from pathlib import Path

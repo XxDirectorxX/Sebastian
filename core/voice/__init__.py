@@ -1,7 +1,7 @@
-# This file makes the 'voice' directory a Python package.
 
-from .wake_word_detector import WakeWordDetector, WakeWordDetectorError
-from .speech_recognizer import SpeechRecognizer, SpeechRecognizerError
-from .speech_synthesizer import SpeechSynthesizer, SpeechSynthesizerError
-from .voice_interface import VoiceInterface, VoiceInterfaceError, VoiceInterfaceState
+# core/voice/__init__.py
 
+from .speech_synthesis import say
+from .emotion_shaper import get_emotion_config
+from .tts_engine import synthesize_text
+from .voice_output import speak_text

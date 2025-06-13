@@ -1,16 +1,17 @@
-# core/plugins/session.py
 
-from core.plugin_utils import plugin_metadata
+# plugins/session.py
 
-@plugin_metadata(name="session", description="Manages session-related commands", version="1.0")
-def run(params: dict, context: dict = None, tone: str = None) -> str:
-    action = params.get("action")
+import logging
 
-    if action == "end":
-        return "Session terminated. I remain at your service, should you summon me again."
+logger = logging.getLogger("Sebastian.Plugin.Session")
 
-    if action == "reset":
-        context.clear()
-        return "All session data has been cleared, my lord."
+SUPPORTED_INTENTS = ['start_session', 'end_session']
 
-    return "Specify whether to 'end' or 'reset' the session."
+async def handle(intent: dict) -> str:
+    try:
+        logger.info(f"[Session] Handling intent: {intent}")
+        # Example logic
+        return "Session updated, My Lord."
+    except Exception as e:
+        logger.exception(f"[Session] Failed to process intent.")
+        return "My apologies, My Lord. That plugin encountered an error."

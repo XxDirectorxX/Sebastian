@@ -1,84 +1,96 @@
 # core/plugin_orchestrator.py
 
+import os
+import json
 import logging
-from core.task_dispatcher import dispatch_task, PluginNotFoundError, PluginExecutionError
-from core.memory import recall_recent_context, store_execution_result
-from core.context_manager import update_context
-from core.personality_simulation import adapt_tone
-from typing import List, Dict, Any
+import importlib.util
+from datetime import datetime, timezone
+from pathlib import Path
+from typing import Dict, Any, Optional
 
-logger = logging.getLogger(__name__)
+import asyncio
+
+from core.memory.short_term import ShortTermMemory
+from core.memory.long_term import LongTermMemory
+from core.task_dispatcher import execute_plugin_intent
+from core.plugin_manager import SessionManager
+
+logger = logging.getLogger("Sebastian.PluginOrchestrator")
 logger.setLevel(logging.DEBUG)
 
-class PluginExecutionErrorWrapper(Exception):
-    """Wrapper for plugin execution failures at orchestrator level."""
-    pass
 
 class PluginOrchestrator:
-    def __init__(self):
-        self.context = recall_recent_context()
+    def __init__(
+        self,
+        plugin_dir: str = "plugins",
+        session_manager: Optional[SessionManager] = None,
+        short_term_memory: Optional[ShortTermMemory] = None,
+        long_term_memory: Optional[LongTermMemory] = None,
+    ):
+        self.plugin_dir = plugin_dir
+        self.plugins: Dict[str, Dict[str, Any]] = {}
+        self.session_manager = session_manager
+        self.short_term_memory = short_term_memory or ShortTermMemory()
+        self.long_term_memory = long_term_memory or LongTermMemory()
 
-    def execute_plan(self, intent: Dict[str, Any]) -> List[Dict[str, Any]]:
-        """
-        Executes a series of plugin actions defined in the intent.
-        Handles fallbacks, sequencing, and emotional context propagation.
-        """
-        results = []
+        self._discover_plugins()
 
-        actions = intent.get("actions", [])
-        tone = intent.get("tone", "neutral")
-        priority = intent.get("priority", "normal")
+    def _discover_plugins(self):
+        if not os.path.isdir(self.plugin_dir):
+            logger.warning(f"Plugin directory not found: {self.plugin_dir}")
+            return
 
-        logger.info(f"Executing {len(actions)} plugin(s) with tone={tone}, priority={priority}.")
+        for filename in os.listdir(self.plugin_dir):
+            if filename.endswith(".py") and not filename.startswith("__"):
+                path = os.path.join(self.plugin_dir, filename)
+                plugin_name = filename[:-3]
+                spec = importlib.util.spec_from_file_location(plugin_name, path)
+                if spec and spec.loader:
+                    module = importlib.util.module_from_spec(spec)
+                    spec.loader.exec_module(module)
+                    if hasattr(module, "SUPPORTED_INTENTS") and hasattr(module, "handle_intent"):
+                        for intent in module.SUPPORTED_INTENTS:
+                            self.plugins[intent] = {
+                                "name": plugin_name,
+                                "module": module,
+                            }
+                        logger.info(f"Loaded plugin: {plugin_name} ({module.SUPPORTED_INTENTS})")
+                    else:
+                        logger.warning(f"Plugin {plugin_name} missing required fields.")
 
-        for index, action in enumerate(actions):
-            plugin_name = action.get("plugin")
-            params = action.get("params", {})
+    async def route_intent(self, intent_data: dict, user_id: str, tone: str = "neutral") -> str:
+        intent = intent_data.get("intent")
+        args = intent_data.get("entities", [])
 
-            logger.debug(f"Dispatching plugin '{plugin_name}' with params {params}.")
+        plugin_entry = self.plugins.get(intent)
+        if not plugin_entry:
+            logger.warning(f"No plugin registered for intent: {intent}")
+            return f"I'm afraid I do not recognize the command '{intent}', My Lord."
 
-            try:
-                personality_hint = adapt_tone(tone, plugin_name, params)
-                result = dispatch_task(plugin_name, params, context=self.context, tone=personality_hint)
+        module = plugin_entry["module"]
+        context = {
+            "short_term": self.short_term_memory.retrieve(user_id),
+            "long_term": self.long_term_memory.query_relevant(user_id, intent_data.get("raw_text", "")),
+            "session": self.session_manager.context.get("sessions", {}).get(user_id, {})
+        }
 
-                logger.info(f"Plugin '{plugin_name}' executed successfully. Result: {result}")
-                results.append({
-                    "plugin": plugin_name,
-                    "result": result,
-                    "success": True
-                })
+        try:
+            result = await execute_plugin_intent(module, intent, args, context)
+            self.short_term_memory.store(user_id, {
+                "intent": intent,
+                "args": args,
+                "response": result
+            })
+            return result
+        except Exception as e:
+            logger.exception("Plugin execution failed")
+            return f"An error occurred while executing '{intent}', My Lord."
 
-                update_context(plugin_name, result)
-                store_execution_result(plugin_name, params, result, success=True)
 
-            except PluginNotFoundError as e:
-                logger.error(f"Plugin '{plugin_name}' not found: {str(e)}")
-                results.append({
-                    "plugin": plugin_name,
-                    "result": str(e),
-                    "success": False
-                })
-                # Continue executing next plugins despite missing plugin
-                continue
+_orchestrator_instance: Optional[PluginOrchestrator] = None
 
-            except PluginExecutionError as e:
-                logger.error(f"Plugin '{plugin_name}' execution failed: {str(e)}")
-                results.append({
-                    "plugin": plugin_name,
-                    "result": str(e),
-                    "success": False
-                })
-                store_execution_result(plugin_name, params, str(e), success=False)
-                # Halt execution on plugin failure
-                raise PluginExecutionErrorWrapper(f"Execution halted at '{plugin_name}' due to error.") from e
-
-            except Exception as e:
-                logger.exception(f"Unexpected error during plugin '{plugin_name}' execution: {str(e)}")
-                results.append({
-                    "plugin": plugin_name,
-                    "result": str(e),
-                    "success": False
-                })
-                raise PluginExecutionErrorWrapper(f"Execution halted at '{plugin_name}' due to unexpected error.") from e
-
-        return results
+def get_plugin_orchestrator(**kwargs) -> PluginOrchestrator:
+    global _orchestrator_instance
+    if _orchestrator_instance is None:
+        _orchestrator_instance = PluginOrchestrator(**kwargs)
+    return _orchestrator_instance
